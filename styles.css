@@ -266,16 +266,10 @@ nav img{
     background: transparent;
     position: relative;
     cursor: pointer;
-    
+
 }
 
-.servicios-btn:hover{
-        border: 1px solid #1f71a7;
-        background:#186aa0 ;
-        text-decoration-color: white;
-        transition: 1s;
-    
-}
+
 
 
 /*-----------------Nosotros----------------------------------------*/
