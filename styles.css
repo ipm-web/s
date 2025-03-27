@@ -178,7 +178,7 @@ nav img {
 }
 
 .layer:hover {
-    background: #4e4d4dc7;
+    background: #000000a1;
 }
 
 .layer h3 {
@@ -306,6 +306,11 @@ nav img {
     flex: 1 1 30%;
 }
 
+.info-contact img{
+    width: 20%;
+    
+}
+
 .footer p {
     font-size: clamp(12px, 1.5vw, 14px);
     color: white;
@@ -406,7 +411,7 @@ nav img {
 
 @media (max-width: 480px) {
     .header {
-        min-height: 60vh;
+        min-height: 100vh;
     }
 
     .text-box h1 {
@@ -417,5 +422,73 @@ nav img {
     .servicios-btn {
         padding: 10px 30px;
         font-size: clamp(10px, 1.5vw, 14px);
+    }
+}
+
+@media (hover: hover){
+    .layer {
+        background: transparent;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: 0.5s;
+    }
+    
+    .layer:hover {
+        background: #000000a1;
+    }
+    
+    .layer h3 {
+        width: 100%;
+        font-weight: 500;
+        color: #fff;
+        font-size: clamp(16px, 2.5vw, 26px);
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: 0.5s;
+    }
+    
+    .layer:hover h3 {
+        bottom: 49%;
+        opacity: 1;
+    }
+}
+
+@media (hover: none){
+    .layer {
+        background: transparent;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: 0.5s;
+    }
+    
+    .layer:hover {
+        background: #000000a1;
+    }
+    
+    .layer h3 {
+        width: 100%;
+        font-weight: 500;
+        color: #fff;
+        font-size: clamp(16px, 2.5vw, 26px);
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: 0.5s;
+    }
+    
+    .layer:hover h3 {
+        bottom: 49%;
+        opacity: 1;
     }
 }

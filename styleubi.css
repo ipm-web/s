@@ -99,7 +99,7 @@ nav img {
 }
 
 .footertitle {
-    background-color: black;
+    background-color: #000000;
     padding: 1% 0;
 }
 
@@ -112,6 +112,11 @@ nav img {
 
 .info-contact {
     flex: 1 1 30%;
+}
+
+.info-contact img{
+    width: 20%;
+    
 }
 
 .footer p {

@@ -9,6 +9,11 @@ html::-webkit-scrollbar {
     display: none;
 }
 
+.info-contact img{
+    width: 20%;
+    
+}
+
 .header {
     min-height: 10vh;
     width: 100%;
@@ -129,7 +134,7 @@ nav img {
 }
 
 .layer:hover {
-    background: #4e4d4dc7;
+    background: #000000a1;
 }
 
 .layer h3 {
@@ -254,3 +259,4 @@ nav img {
         margin: 10px 0;
     }
 }
+
