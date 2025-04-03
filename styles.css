@@ -206,8 +206,10 @@ nav img {
     padding-bottom: 4%;
     padding-left: 5%;
     padding-right: 5%;
-    width: 525px;
-    float: left
+    width: 550px;
+    float: left;
+    align-self: center;
+    
 }
 .sobrenosotros {
 
@@ -218,6 +220,7 @@ nav img {
     color: white;
     padding-top: 4%;
     padding-left: 5%;
+    padding-right: 5%;
     margin-bottom: 1%;
 
 }
@@ -228,6 +231,15 @@ nav img {
     padding-bottom: 5%;
     text-align: justify;
     color: white;
+}
+
+@media (max-width: 1024px) {
+    .sobrenosotros img{
+        
+        width: 100%;
+    }
+
+
 }
 
 /*--------------------------------------------------------*/
