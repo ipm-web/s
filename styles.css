@@ -131,7 +131,7 @@ nav img {
     margin: auto;
     text-align: center;
     padding-top: 20px;
-    margin-bottom: 4%;
+    padding-bottom: 4%;
 }
 
 .campus h1 {
@@ -199,37 +199,39 @@ nav img {
     opacity: 1;
 }
 
-.comosifueraelbody{
+/*----------------------------------------------------------*/
 
-    background-color:rgba(226, 232, 247, 0.514);
-    justify-content: space-between;
-    gap: 20px;
-
-
+.sobrenosotros img{
+    padding-top: 4%;
+    padding-bottom: 4%;
+    padding-left: 5%;
+    padding-right: 5%;
+    width: 525px;
+    float: left
 }
-.comosifueraelbody img{
-    width: 400px;
-    float: right;
-    margin-right: 5%;
-    margin-left: 4%;
-    align-items: center;
+.sobrenosotros {
 
+    background-color: #013c6e;
 }
 
-.comosifueraelbody h1{
-    font-size: 30px;
-    margin-left: 5%;
-    margin-bottom: 2%;
-    margin-top: 5%;
+.sobrenosotros h1{
+    color: white;
+    padding-top: 4%;
+    padding-left: 5%;
+    margin-bottom: 1%;
 
 }
 
-.comosifueraelbody p{
-    margin-left: 5%;
-    margin-right: 5%;
+.sobrenosotros p {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
     text-align: justify;
-
+    color: white;
 }
+
+/*--------------------------------------------------------*/
+
 .servicios-btn {
     display: inline-block;
     text-decoration: none;
