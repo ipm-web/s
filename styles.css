@@ -199,6 +199,37 @@ nav img {
     opacity: 1;
 }
 
+.comosifueraelbody{
+
+    background-color:rgba(226, 232, 247, 0.514);
+    justify-content: space-between;
+    gap: 20px;
+
+
+}
+.comosifueraelbody img{
+    width: 400px;
+    float: right;
+    margin-right: 5%;
+    margin-left: 4%;
+    align-items: center;
+
+}
+
+.comosifueraelbody h1{
+    font-size: 30px;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    margin-top: 5%;
+
+}
+
+.comosifueraelbody p{
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: justify;
+
+}
 .servicios-btn {
     display: inline-block;
     text-decoration: none;
@@ -223,17 +254,28 @@ nav img {
     text-align: center;
     padding: 30px 0 10px;
     background-color: rgba(226, 232, 247, 0.514);
+    
 }
 
+.us h2{
+
+    font-size: 18px;
+    margin-top: 1%;
+
+}
 .us h1 {
     font-size: clamp(24px, 4vw, 32px);
-    padding-top: 50px;
+    padding-top: 40px;
+    display: flex;
+    padding-left: 8%;
+
 }
 
 .us p {
     padding: 2% 3%;
     font-size: clamp(14px, 1.8vw, 16px);
 }
+
 
 .row,
 .row-2 {
@@ -242,7 +284,7 @@ nav img {
     flex-wrap: wrap;
     gap: 20px;
     padding: 0 2%;
-    margin-top: 5%;
+    margin-top: 4%;
 }
 
 .valores {
@@ -262,6 +304,8 @@ nav img {
     height: auto;
     margin-bottom: 10px;
 }
+
+
 
 .valores h3 {
     font-size: clamp(16px, 2vw, 20px);
@@ -337,6 +381,7 @@ nav img {
         padding: 12px 60px;
     }
 }
+
 
 @media (max-width: 768px) {
     .hamburger {
@@ -491,4 +536,14 @@ nav img {
         bottom: 49%;
         opacity: 1;
     }
+
+    
+@media screen and (max-width:800px) {
+    .quienesomo {
+        width: 100%;
+    }
+
+    
+    
+}
 }
