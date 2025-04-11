@@ -259,4 +259,36 @@ nav img {
         margin: 10px 0;
     }
 }
+@media (hover: none){
+    .layer {
+        background: transparent;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: 0.5s;
+        background: #0000006c;
+    }
+ }
+    
+    
+    .layer h3 {
+        width: 100%;
+        font-weight: 500;
+        color: #fff;
+        font-size: clamp(16px, 2.5vw, 26px);
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        
+    
+    }
+    
+    .layer h3 {
+        bottom: 25%;
+        opacity: 1;
+    }
 

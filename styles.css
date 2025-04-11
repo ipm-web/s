@@ -100,12 +100,15 @@ nav img {
 .text-box h1 {
     font-family: 'Times New Roman', Times, serif;
     font-size: clamp(24px, 5vw, 38px);
-    margin-bottom: 20px;
+    margin-bottom: 22px;
+    padding-bottom: 5%;
+    padding-top: 5%;
 }
 
 .text-box p {
     margin: 10px 0 40px;
-    font-size: clamp(12px, 2vw, 16px);
+    font-size: clamp(15px, 2vw, 16px);
+    padding-bottom: 5%;
 }
 
 .hero-btn {
@@ -113,8 +116,8 @@ nav img {
     text-decoration: none;
     color: white;
     border: 1px solid white;
-    padding: 12px 80px;
-    font-size: clamp(12px, 1.5vw, 16px);
+    padding: 20px 40px;
+    font-size: clamp(18px, 1.5vw, 16px);
     background: transparent;
     cursor: pointer;
     transition: all 1s;
@@ -390,9 +393,12 @@ nav img {
         padding: 8px 10px;
     }
 
-    .hero-btn,
+    .hero-btn {
+        padding: 30px 50px;
+    }
+
     .servicios-btn {
-        padding: 12px 60px;
+        padding: 20px 40px;
     }
 }
 
@@ -474,14 +480,18 @@ nav img {
     }
 
     .text-box h1 {
-        font-size: clamp(20px, 4vw, 30px);
+        font-size: clamp(25px, 4vw, 30px);
     }
 
-    .hero-btn,
-    .servicios-btn {
-        padding: 10px 30px;
-        font-size: clamp(10px, 1.5vw, 14px);
+    .hero-btn {
+        padding: 20px 45px;
+        font-size: clamp(16px, 1.5vw, 14px);
     }
+    .servicios-btn {
+        padding: 15px 25px;
+        font-size: clamp(13px, 1.5vw, 14px);
+    }
+
 }
 
 @media (hover: hover){
@@ -492,7 +502,7 @@ nav img {
         position: absolute;
         top: 0;
         left: 0;
-        transition: 0.5s;
+       
     }
     
     .layer:hover {
@@ -509,7 +519,7 @@ nav img {
         left: 50%;
         transform: translateX(-50%);
         opacity: 0;
-        transition: 0.5s;
+        
     }
     
     .layer:hover h3 {
@@ -527,11 +537,9 @@ nav img {
         top: 0;
         left: 0;
         transition: 0.5s;
+        background: #0000005d;
     }
     
-    .layer:hover {
-        background: #000000a1;
-    }
     
     .layer h3 {
         width: 100%;
@@ -543,10 +551,10 @@ nav img {
         left: 50%;
         transform: translateX(-50%);
         opacity: 0;
-        transition: 0.5s;
+    
     }
     
-    .layer:hover h3 {
+    .layer h3 {
         bottom: 49%;
         opacity: 1;
     }
