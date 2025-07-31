@@ -347,13 +347,12 @@ nav img {
 
 .nosewe {
     background-color: black;
-    padding: 1% 0;
+    padding: 1% 20px;
 }
 
 .nosewe h4 {
     font-size: clamp(12px, 2vw, 15px);
     color: white;
-    text-align: center;
     margin: 0;
 }
 
