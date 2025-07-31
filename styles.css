@@ -345,17 +345,6 @@ nav img {
     padding: 1% 0;
 }
 
-.nosewe {
-    background-color: black;
-    padding: 1% 20px;
-}
-
-.nosewe h4 {
-    font-size: clamp(12px, 2vw, 15px);
-    color: white;
-    margin: 0;
-}
-
 .footertitle h4 {
     font-size: clamp(12px, 2vw, 15px);
     color: white;
