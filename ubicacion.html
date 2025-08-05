@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bytesized&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
+<body style="background-color: #e2ebf6;"></body>
 <body>
     <section class="header">
         <nav>
@@ -19,55 +20,62 @@
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="servicios.html">Servicios</a></li>
-                    <li><a href="ubicacion.html">Ubicación</a></li>
+                    <li><a href="ubicacion.html">Contáctanos</a></li>
                     <li><a href="index.html#nosotres">Nosotros</a></li>
                     <li><a href="https://www.instagram.com/ipmada?igsh=eGtvdHd2MjZtZnh2">Blog</a></li>
                 </ul>
             </div>
         </nav>
     </section>
-
-    <section class="mapa">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462.66500682146426!2d-102.2739889133878!3d21.9222441219858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8429ef0b15764a8b%3A0x334a8371afc6a70c!2sIndustrial%20Processes%20Mada%20SA%20de%20CV!5e0!3m2!1ses!2smx!4v1742923740068!5m2!1ses!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </section>
-
-    <div class="footertitle">
-        <h4>Contacto:</h4>
+    <h1>Contáctanos</h1>
+    
+    <div id="form-success" class="form-success">
+        Thank you! Your message has been sent successfully.
     </div>
-    <div class="footer">
-        <div class="info-contact">
-            <a href="https://wa.me/4492116294?text=Buen%20Día!%20Me%20interesaria%20realizar%20una%20cotización%13"><img src="Images/wssp.png"></a>
-            <p><a href="tel:4492116294" class="white-num">☏ 449 211 6294</a></p>
-            <p><a href="mailto:leonardos.dims@gmail.com" class="white">✉ leonardos.dims@gmail.com</a></p>
+    
+    
+    <div id="form-success" class="form-success">
+        Thank you! Your message has been sent successfully.
+    </div>
+    
+    <div class="contact-wrapper">
+        <div class="contact-form">
+            <form action="https://formspree.io/f/xblkzagb" method="POST" id="contact-form">
+                <div class="form-group">
+                    <label for="name">Nombre completo</label>
+                    <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">CORREO ELECTRÓNICO</label>
+                    <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">ASUNTO</label>
+                    <input type="text" id="subject" name="subject" placeholder="Asunto" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">MENSAJE</label>
+                    <textarea id="message" name="message" placeholder="Tu mensaje aquí..." required></textarea>
+                </div>
+                
+                <button type="submit">Enviar mensaje</button>
+            </form>
         </div>
-        <div class="info-contact">
-            <a href="https://wa.me/4491782777?text=Buen%20Día!%20Me%20interesaria%20realizar%20una%20cotización"><img src="Images/wssp.png"></a>
-            <p><a href="tel:4491782777" class="white-num">☏ 449 178 2777</a></p>
-            <p><a href="mailto:rauluvario63@gmail.com" class="white">✉ rauluvario63@gmail.com</a></p>
-        </div>
-        <div class="info-contact">
-            <a href="https://wa.me/4491569425?text=Buen%20Día!%20Me%20interesaria%20realizar%20una%20cotización"><img src="Images/wssp.png"></a>
-            <p><a href="tel:4491569425" class="white-num">☏ 449 156 9425</a></p>
-            <p><a href="mailto:jgerardo.dims@gmail.com" class="white">✉ jgerardo.dims@gmail.com</a></p>
-        </div>
-        <div class="info-contact">
-            <a href="https://wa.me/4493389862?text=Buen%20Día!%20Me%20interesaria%20realizar%20una%20cotización"><img src="Images/wssp.png"></a>
-            <p><a href="tel:4493389862">☏ 449 338 9862</a></p>
-            <p><a href="mailto:alejandrous.dims@gmail.com">✉ alejandrous.dims@gmail.com</a></p>
-        </div>
-        <div class="info-contact">
-            <a href="https://wa.me/4492108166?text=Buen%20Día!%20Me%20interesaria%20realizar%20una%20cotización"><img src="Images/wssp.png"></a>
-            <p><a href="tel:4492108166">☏ 449 210 8166</a></p>
-            <p><a href="mailto:victorruiz.dims@gmail.com">✉ victorruiz.dims@gmail.com</a></p>
-        </div>
-        <div class="info-contact">
-            <a href="https://wa.me/4491829271?text=Buen%20Día!%20Me%20interesaria%20realizar%20una%20cotización"><img src="Images/wssp.png"></a>
-            <p><a href="tel:4491829271" class="white-num">☏ 449 182 9271</a></p>
-            <p><a href="mailto:rober.dims@gmail.com" class="white">✉ rober.dims@gmail.com</a></p>
+        
+        <div class="map-container">
+            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3701.310797612439!2d-102.27588462489302!3d21.922600179959943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8429ef0b15764a8b%3A0x334a8371afc6a70c!2sIndustrial%20Processes%20Mada%20SA%20de%20CV!5e0!3m2!1ses-419!2smx!4v1754324904093!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
+    <footer>
+        <p>&copy; 2023 Industrial Processes MADA S.A. de C.V. | <a href="https://www.instagram.com/ipmada?igsh=eGtvdHd2MjZtZnh2">Blog</a></p>
+    </footer>
 
     <script>
+        /*Copilot solve the errors of these scripts*/ 
+        
         document.addEventListener('DOMContentLoaded', function () {
             const hamburger = document.querySelector('.hamburger');
             const navLinks = document.querySelector('.nav-links');
@@ -76,7 +84,7 @@
             hamburger.addEventListener('click', function (e) {
                 e.stopPropagation();
                 navLinks.classList.toggle('active');
-            });
+        });});
 
             navItems.forEach(item => {
                 item.addEventListener('click', function () {
@@ -88,6 +96,39 @@
                 if (!navLinks.contains(e.target) && !hamburger.contains(e.target) && navLinks.classList.contains('active')) {
                     navLinks.classList.remove('active');
                 }
+            });
+            
+
+                    // Handle form submission
+            document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success message
+                    document.getElementById('form-success').style.display = 'block';
+                    // Reset form
+                    form.reset();
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        document.getElementById('form-success').style.display = 'none';
+                    }, 5000);
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was a problem sending your message. Please try again.');
             });
         });
     </script>

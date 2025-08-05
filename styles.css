@@ -342,6 +342,31 @@ nav img {
     margin: 0;
 }
 
+p {
+    font-size: clamp(15px, 2vw, 15px);
+    color: white;
+    text-align: center;
+    margin: 0;
+}
+
+.info-contact p {
+    font-size: clamp(15px, 2vw, 15px);
+    color: white;
+    text-align: left;
+    margin: 0;
+}
+
+footer {
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 10px 2%;
+    gap: 20px;
+    text-align: center;
+}
+
 .footer {
     width: 100%;
     background-color: black;
