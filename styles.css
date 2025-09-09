@@ -349,6 +349,13 @@ p {
     margin: 0;
 }
 
+tp {
+    font-size: clamp(15px, 2vw, 15px);
+    color: white;
+    text-align: center;
+    margin: 0;
+}
+
 .info-contact p {
     font-size: clamp(15px, 2vw, 15px);
     color: white;
@@ -603,4 +610,5 @@ footer {
     
 }
 }
+
 
