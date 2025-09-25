@@ -344,7 +344,7 @@ nav img {
 
 p {
     font-size: clamp(15px, 2vw, 15px);
-    color: #fff;
+    color: #ffffff;
     text-align: center;
     margin: 0;
 }
@@ -603,6 +603,7 @@ footer {
     
 }
 }
+
 
 
 
