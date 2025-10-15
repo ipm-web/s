@@ -326,108 +326,188 @@ nav img {
     padding: 2% 5%;
 }
 
-/* Footer Styles */
-.footertitle {
-    background-color: black;
-    padding: 1% 0;
-}
-
-.footertitle h4 {
-    font-size: clamp(20px, 2vw, 15px);
-    color: white;
-    text-align: center;
-    margin: 0;
-}
-
-p {
-    font-size: clamp(15px, 2vw, 15px);
-    color: #ffffff;
-    text-align: center;
-    margin: 0;
-}
-
-.info-contact p {
-    font-size: clamp(15px, 2vw, 15px);
-    color: white;
-    text-align: left;
-    margin: 0;
-}
-
-footer {
-    width: 100%;
-    background-color: black;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 10px 2%;
-    gap: 20px;
-    text-align: center;
-}
-
 .footer {
     width: 100%;
-    background-color: black;
+    background: #000000;
+    padding: 40px 10% 30px;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 60px 10%;
-    gap: 40px;
-    text-align: left;
-}
-
-.info-contact {
-    flex: 1 1 300px;
-    min-width: 250px;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    padding-left: 5%;
+    margin-top: 0px;
 }
 
-.info-contact img{
-    width: 10%;
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1500px;
+    width: 100%;
+    gap: 60px; /* Increased gap between sections */
 }
 
-.mapa {
-    flex: 1 1 300px;
-    min-width: 250px;
+.footer-section {
+    flex: 1;
+    min-width: 280px;
+    margin-bottom: 20px;
+    text-align: left; /* All sections left-aligned */
+}
+
+/* Remove previous alignment rules for individual sections */
+.footer-section:first-child,
+.footer-section:nth-child(2),
+.footer-section:nth-child(3) {
+    text-align: left;
     padding: 0;
 }
 
-.mapa iframe {
-    width: 100%;
-    height: 200px;
-    border-radius: 5px;
+/* Increased spacing specifically between company info and contact sections */
+.footer-section:first-child {
+    margin-right: 20px; /* Additional right margin for more spacing */
 }
 
-.footer p {
-    font-size: clamp(15px, 1.5vw, 14px);
-    color: white;
-    margin: 10px 0;
+.footer-section:nth-child(2) {
+    margin-left: 60px; /* Additional left margin for more spacing */
+    margin-right: 30px; /* Additional right margin for more spacing */
 }
 
-.info-contact a {
+.footer-section h3 {
+    color: #1e93e1;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.footer-section h4 {
     color: white;
+    margin-bottom: 18px;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.footer-section p {
+    color: #ddd;
+    line-height: 1.8;
+    margin-bottom: 12px;
+    font-size: 15px;
+    text-align: left; /* All text left-aligned */
+}
+
+/* Company description text */
+.footer-section:first-child p {
+    text-align: left;
+    max-width: 300px;
+}
+
+/* Contact info - left aligned */
+.footer-section:nth-child(2) p {
+    text-align: left;
+}
+
+/* Business hours - left aligned */
+.footer-section:nth-child(3) p {
+    text-align: left;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    justify-content: flex-start; /* Contact info left-aligned */
+}
+
+.contact-info i {
+    margin-right: 12px;
+    color: #1e93e1;
+    width: 18px;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.contact-info a {
+    color: #ddd;
     text-decoration: none;
+    transition: color 0.3s;
+    font-size: 15px;
 }
 
-/* Media Queries */
+.contact-info a:hover {
+    color: #1e93e1;
+}
+
+.business-hours p {
+    margin-bottom: 10px;
+    font-size: 15px;
+    text-align: left; /* Business hours left-aligned */
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: flex-start; /* Social links aligned left */
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 18px;
+}
+
+.social-links a:hover {
+    background: #1e93e1;
+    transform: translateY(-3px);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    width: 100%;
+    background-color: #000000;
+    padding: 15px 2%;
+    text-align: left;
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+    color: #ffffff;
+    font-size: 15px;
+    margin: 0;
+    font-weight: 400;
+}
+
+.footer-bottom a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-bottom a:hover {
+    color: #1e93e1;
+    text-decoration: underline;
+}
+
+
+/* Responsive Design */
 @media (max-width: 1024px) {
-    .header {
-        min-height: 80vh;
+    .footer-content {
+        gap: 50px;
     }
-
-    .nav-links ul li {
-        padding: 8px 10px;
+    
+    .footer-section {
+        flex: 0 1 280px;
     }
-
-    .hero-btn {
-        padding: 30px 50px;
-    }
-
-    .servicios-btn {
-        padding: 20px 40px;
+    
+    .footer-section:first-child,
+    .footer-section:nth-child(2) {
+        margin-left: 0;
+        margin-right: 0;
     }
 }
 
@@ -443,7 +523,7 @@ footer {
         right: -250px;
         width: 250px;
         height: 100vh;
-        background: linear-gradient(135deg, #013c6e 5%, #1478dc 100%);
+        background: #000000;
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
         text-align: center;
         padding-top: 80px;
@@ -499,35 +579,6 @@ footer {
         padding: 12px 40px;
     }
     
-    /* Footer mobile fixes - REVERSED ORDER */
-    .footer {
-        flex-direction: column;
-        padding: 40px 5%;
-        gap: 30px;
-        text-align: center;
-    }
-    
-    .info-contact {
-        text-align: center;
-        min-width: 100%;
-        align-items: center;
-        padding-left: 0;
-        order: 1; /* Contact info comes FIRST on mobile */
-    }
-    
-    .info-contact p {
-        text-align: center;
-    }
-    
-    .mapa {
-        min-width: 100%;
-        order: 2; /* Map comes SECOND on mobile */
-    }
-    
-    .mapa iframe {
-        width: 100%;
-        height: 250px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -548,19 +599,6 @@ footer {
         font-size: clamp(13px, 1.5vw, 14px);
     }
     
-    /* Footer mobile fixes */
-    .footer {
-        padding: 30px 5%;
-        gap: 20px;
-    }
-    
-    .mapa iframe {
-        height: 200px;
-    }
-    
-    .info-contact p {
-        font-size: 14px;
-    }
 }
 
 @media (hover: hover){
@@ -626,23 +664,4 @@ footer {
         bottom: 49%;
         opacity: 1;
     }
-}
-
-/* Footer bottom section */
-footer {
-    width: 100%;
-    background-color: black;
-    padding: 10px 2%;
-    text-align: center;
-}
-
-footer p {
-    font-size: clamp(12px, 1.5vw, 14px);
-    color: white;
-    margin: 0;
-}
-
-footer a {
-    color: white;
-    text-decoration: none;
 }
