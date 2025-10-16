@@ -6,6 +6,27 @@
     
 }
 
+.nav-links ul li a.active {
+    color: #1e93e1;
+    font-weight: 600;
+}
+
+/* Add loading animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #1e93e1;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 html::-webkit-scrollbar {
     display: none;
 }

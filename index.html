@@ -1,9 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="description" content="Industrial Processes MADA - Especialistas en maquinados CNC, soldadura y procesos industriales en Aguascalientes, México">
+    <meta name="keywords" content="maquinados CNC, soldadura, procesos industriales, Aguascalientes">
+    <meta name="author" content="Industrial Processes MADA">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Industrial Processes MADA">
+    <meta property="og:description" content="Especialistas en procesos industriales de alta calidad">
+    <meta property="og:image" content="Images/logo.png">
+    <meta property="og:url" content="https://tusitio.com">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Industrial Processes MADA S.A. de C.V.</title>
+    <title>INDUSTRIAL PROCESSES MADA S.A. de C.V.</title>
+
+    <link rel="preload" href="Images/logo.png" as="image">
+    <link rel="preload" href="styles.css" as="style">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="icon" href="Images/ipm.png">
@@ -130,9 +143,9 @@
             <div class="footer-section">
                 <h4>Contacto</h4>
                 <div class="contact-info">
-                    <p><i class="fas fa-phone"></i> <a href="https://wa.me/+524491782777?text=Buen%20Día!%20Me%20interesaria%20realizar%20una%20cotización%13">449 178 2777</a></p>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:rauluvario63@gmail.com">ventas@ipmada.com</a></p>
-                    <p><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/CNw7VK5QKC6rkBScA" target="_blank">Aguascalientes, México</a></p>
+                    <p><i class="fas fa-phone"></i> <u><a href="https://wa.me/+524491782777?text=Buen%20Día!%20Me%20interesaria%20realizar%20una%20cotización%13">449 178 2777</a></u></p>
+                    <p><i class="fas fa-envelope"></i> <u><a href="mailto:rauluvario63@gmail.com">ventas@ipmada.com</a></u></p>
+                    <p><i class="fas fa-map-marker-alt"></i> <u><a href="https://maps.app.goo.gl/CNw7VK5QKC6rkBScA" target="_blank">Aguascalientes, México</a></u></p>
                 </div>
             </div>
             
@@ -157,6 +170,7 @@
             const navLinks = document.querySelector('.nav-links');
             const navItems = navLinks.querySelectorAll('li a');
 
+
             // Toggle sidebar on hamburger click
             hamburger.addEventListener('click', function (e) {
                 e.stopPropagation(); // Prevent click from closing immediately
@@ -179,6 +193,13 @@
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
     </script>
 </body>
 </html>

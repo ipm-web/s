@@ -105,7 +105,7 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function () {
             const hamburger = document.querySelector('.hamburger');
             const navLinks = document.querySelector('.nav-links');
             const navItems = navLinks.querySelectorAll('li a');
@@ -126,6 +126,17 @@
                     navLinks.classList.remove('active');
                 }
             });
+
+            function validateForm() {
+            const email = document.getElementById('email').value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+                if (!emailRegex.test(email)) {
+                showError('Por favor ingresa un email válido');
+                return false;
+                }
+            return true;
+            }
             
             // Handle form submission
             document.getElementById('contact-form').addEventListener('submit', function(e) {
