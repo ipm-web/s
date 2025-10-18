@@ -49,36 +49,54 @@
     <section class="campus" id="servicios">
         <h1>Nuestros Servicios</h1>
         <div class="row-2">
-            <div class="campus-col">
-             <a href="ubicacion.html">   
+            <div class="campus-col service-card" data-service="cnc">
                 <img src="Images/cnccontrol.jpg" alt="Maquinados CNC" loading="lazy">
                 <div class="layer">
                     <h3>MAQUINADOS CNC</h3>
-             
                 </div>
-            </a> 
+                <div class="service-info">
+                    <p>Maquinado controlado por computadora de alta precisión</p>
+                    <ul class="service-features">
+                        <li>Maquinado 3 Ejes</li>
+                        <li>Tolerancias de hasta ±0.001mm</li>
+                        <li>Varios Materiales</li>
+                    </ul>
+                    <span class="click-hint">Click para más detalles →</span>
+                </div>
             </div>
-            <div class="campus-col">
-            <a href="ubicacion.html">
-                <img src="Images/hiloerosionadora.jpg" alt="Torno y Fresadora" loading="lazy">
+            <div class="campus-col service-card" data-service="electroerosion">
+                <img src="Images/hiloerosionadora.jpg" alt="Electroerosión por Hilo" loading="lazy">
                 <div class="layer">
-                    <h3>ELECTROEROSION POR HILO</h3>
+                    <h3>ELECTROEROSIÓN POR HILO</h3>
                 </div>
-            </a>
+                <div class="service-info">
+                    <p>Electroerosión por hilo de alta precisión</p>
+                    <ul class="service-features">
+                        <li>Cortes Precisos</li>
+                        <li>Geometrías Complejas</li>
+                        <li>Materiales Duros</li>
+                    </ul>
+                    <span class="click-hint">Click para más detalles →</span>
+                </div>
             </div>
-            <div class="campus-col">
-            <a href="ubicacion.html">
+            <div class="campus-col service-card" data-service="soldadura">
                 <img src="Images/soldaduraa.jpg" alt="Soldadura" loading="lazy">
                 <div class="layer">
                     <h3>SOLDADURA</h3>
                 </div>
-            </a>
+                <div class="service-info">
+                    <p>Soldadura especializada para aplicaciones industriales</p>
+                    <ul class="service-features">
+                        <li>Soldadura MIG/MAG</li>
+                        <li>Soldadura TIG</li>
+                        <li>Soldadura por Arco</li>
+                    </ul>
+                    <span class="click-hint">Click para más detalles →</span>
+                </div>
             </div>
         </div>
         <a href="servicios.html" class="servicios-btn">Todos Nuestros Servicios</a>
     </section>
-
-<!--------------------------------------------------------------------------------------------------->
 
     <section class="sobrenosotros" id="nosotres">
         <img src="Images/inicios.jpg" loading="lazy">
@@ -89,7 +107,6 @@
         
     </section>
 
-<!-------------------------------------------------------------------------------------------------->
     <section class="us" id="us">
         <div class="row">
             <div class="valores">
@@ -127,7 +144,7 @@
         </div>
     </section>
 
-    <!-- Enhanced Footer - Updated with ubicacion footer styles -->
+    <!-- Enhanced Footer -->
     <div class="footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -144,7 +161,7 @@
                 <h4>Contacto</h4>
                 <div class="contact-info">
                     <p><i class="fas fa-phone"></i> <u><a href="https://wa.me/+524491782777?text=Buen%20Día!%20Me%20interesaria%20realizar%20una%20cotización%13">449 178 2777</a></u></p>
-                    <p><i class="fas fa-envelope"></i> <u><a href="mailto:rauluvario63@gmail.com">ventas@ipmada.com</a></u></p>
+                    <p><i class="fas fa-envelope"></i> <u><a href="mailto:rauluvario63@gmail.com">rauluvario63@gmail.com</a></u></p>
                     <p><i class="fas fa-map-marker-alt"></i> <u><a href="https://maps.app.goo.gl/CNw7VK5QKC6rkBScA" target="_blank">Aguascalientes, México</a></u></p>
                 </div>
             </div>
@@ -164,12 +181,40 @@
         <p>&copy; 2025 Industrial Processes MADA S.A. de C.V. | <a href="https://www.instagram.com/ipmada?igsh=eGtvdHd2MjZtZnh2">Blog</a></p>
     </footer>
 
+    <!-- Service Modal -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Service Details</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="">
+                </div>
+                <div class="modal-text">
+                    <h3 id="modalServiceTitle"></h3>
+                    <p id="modalDescription" class="modal-description"></p>
+                    
+                    <div class="modal-features">
+                        <h4>Lo que ofrecemos:</h4>
+                        <ul id="modalFeatures"></ul>
+                    </div>
+                    
+                    <div class="modal-cta">
+                        <a href="ubicacion.html" class="cta-btn">Solicitar Cotización</a>
+                        <!--<a href="#" class="secondary-btn">Ver Portafolio</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const hamburger = document.querySelector('.hamburger');
             const navLinks = document.querySelector('.nav-links');
             const navItems = navLinks.querySelectorAll('li a');
-
 
             // Toggle sidebar on hamburger click
             hamburger.addEventListener('click', function (e) {
@@ -190,6 +235,99 @@
                     navLinks.classList.remove('active');
                 }
             });
+
+            // Service Modal Functionality
+            const serviceCards = document.querySelectorAll('.service-card');
+            const modal = document.getElementById('serviceModal');
+            const closeModal = document.querySelector('.close-modal');
+
+            // Service data
+            const serviceData = {
+                cnc: {
+                    title: "MAQUINADOS CNC",
+                    image: "Images/cnccontrol.jpg",
+                    description: "Ofrecemos servicios de maquinado CNC de alta precisión para piezas complejas. Utilizamos tecnología de vanguardia para garantizar la máxima calidad y exactitud en cada proyecto. Nuestros equipos de última generación nos permiten trabajar con diversos materiales y cumplir con las especificaciones más exigentes.",
+                    features: [
+                        "Maquinado 3 ejes de alta precisión",
+                        "Tolerancias hasta ±0.005mm",
+                        "Múltiples materiales: acero, aluminio, plásticos, titanio",
+                        "Prototipos rápidos y producción en serie",
+                        "Control de calidad integrado con metrología avanzada",
+                        "Asesoría técnica en diseño y optimización"
+                    ]
+                },
+                electroerosion: {
+                    title: "ELECTROEROSIÓN POR HILO",
+                    image: "Images/hiloerosionadora.jpg",
+                    description: "Tecnología de electroerosión por hilo para el maquinado de piezas de extrema precisión en materiales conductores. Ideal para matrices, troqueles y componentes con geometrías complejas que requieren acabados de alta calidad sin esfuerzos mecánicos.",
+                    features: [
+                        "Corte de alta precisión en materiales duros",
+                        "Geometrías complejas y ángulos variables",
+                        "Tolerancias de ±0.002mm",
+                        "Acabados superficiales de alta calidad",
+                        "Sin esfuerzos mecánicos en la pieza",
+                        "Ideal para matrices, troqueles y moldes"
+                    ]
+                },
+                soldadura: {
+                    title: "SOLDADURA INDUSTRIAL",
+                    image: "Images/soldaduraa.jpg",
+                    description: "Servicios de soldadura especializada para aplicaciones industriales exigentes. Contamos con certificaciones y amplia experiencia en diversos procesos de soldadura, garantizando uniones fuertes, duraderas y de alta calidad para sus proyectos más desafiantes.",
+                    features: [
+                        "Soldadura MIG/MAG para alta productividad",
+                        "Soldadura TIG para máxima precisión",
+                        "Soldadura por arco para aplicaciones estructurales",
+                        "Reparación y mantenimiento de equipos industriales",
+                        "Soldadura de aceros inoxidables y aleaciones especiales"
+                    ]
+                }
+            };
+
+            // Add click event to cards
+            serviceCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const serviceType = this.getAttribute('data-service');
+                    openServiceModal(serviceType);
+                });
+            });
+
+            function openServiceModal(serviceType) {
+                const service = serviceData[serviceType];
+                
+                document.getElementById('modalImage').src = service.image;
+                document.getElementById('modalImage').alt = service.title;
+                document.getElementById('modalTitle').textContent = service.title;
+                document.getElementById('modalServiceTitle').textContent = service.title;
+                document.getElementById('modalDescription').textContent = service.description;
+                
+                const featuresList = document.getElementById('modalFeatures');
+                featuresList.innerHTML = '';
+                service.features.forEach(feature => {
+                    const li = document.createElement('li');
+                    li.textContent = feature;
+                    featuresList.appendChild(li);
+                });
+                
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Close modal
+            closeModal.addEventListener('click', closeModalFunc);
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModalFunc();
+            });
+
+            // Close with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeModalFunc();
+            });
+
+            function closeModalFunc() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });

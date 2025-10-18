@@ -189,6 +189,371 @@ p {
     margin: 0;
 }
 
+/* Enhanced Service Cards - Matching Index Page */
+.service-card {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.service-card img {
+    transition: transform 0.5s ease;
+}
+
+.service-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Enhanced overlay that works with your original layer - WHITE TEXT */
+.service-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 25px 20px 20px 20px;
+    color: white; /* WHITE TEXT for card overlay */
+    background: linear-gradient(transparent 40%, rgba(0,0,0,0.9) 80%);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+.service-card:hover .service-info {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-info p {
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    text-align: center;
+    font-weight: 500;
+    color: white; /* WHITE TEXT */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0 0;
+}
+
+.service-features li {
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+    padding-left: 18px;
+    position: relative;
+    color: white; /* WHITE TEXT */
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+}
+
+.service-features li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #1e93e1;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.click-hint {
+    display: block;
+    margin-top: 12px;
+    font-size: 0.75rem;
+    opacity: 0.9;
+    text-align: center;
+    font-style: italic;
+    color: white; /* WHITE TEXT */
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+}
+
+/* Fix for original layer to work with new info */
+.service-card .layer {
+    z-index: 1;
+}
+
+.service-card .service-info {
+    z-index: 2;
+}
+
+/* Make sure original title animation still works */
+.service-card:hover .layer h3 {
+    bottom: 70%;
+    opacity: 1;
+}
+
+/* Mobile-first approach for service cards */
+@media (max-width: 768px) {
+    /* Show service info by default on mobile - WHITE TEXT */
+    .service-card .service-info {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        background: linear-gradient(transparent 40%, rgba(0,0,0,0.9) 80%); /* Dark background for white text */
+    }
+    
+    /* Adjust layer to work with visible info */
+    .service-card .layer {
+        background: rgba(0, 0, 0, 0.6);
+    }
+    
+    /* Position title properly with visible info */
+    .service-card .layer h3 {
+        bottom: 70%;
+        opacity: 1;
+    }
+    
+    /* Make cards more touch-friendly */
+    .service-card {
+        padding-bottom: 0;
+    }
+    
+    /* Ensure proper spacing between cards */
+    .campus-col {
+        margin-bottom: 30px;
+    }
+    
+    /* Hide click hint on mobile since info is always visible */
+    .service-card .click-hint {
+        display: none;
+    }
+}
+
+/* For larger mobile devices in landscape */
+@media (max-width: 1024px) and (min-width: 769px) and (orientation: landscape) {
+    .service-card .service-info {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .service-card .layer {
+        background: rgba(0, 0, 0, 0.6);
+    }
+    
+    .service-card .layer h3 {
+        bottom: 70%;
+        opacity: 1;
+    }
+    
+    .service-card .click-hint {
+        display: block;
+    }
+}
+
+/* Touch device detection */
+@media (hover: none) and (pointer: coarse) {
+    .service-card .service-info {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .service-card .layer {
+        background: rgba(0, 0, 0, 0.6);
+    }
+    
+    .service-card .layer h3 {
+        bottom: 70%;
+        opacity: 1;
+    }
+    
+    .service-card .click-hint {
+        display: none;
+    }
+}
+
+/* Modal Styles - BLACK TEXT in modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+    overflow-y: auto;
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    max-width: 900px;
+    width: 90%;
+    margin: 40px auto;
+    box-shadow: 0 10px 50px rgba(0,0,0,0.3);
+    animation: slideUp 0.4s ease;
+}
+
+.modal-header {
+    padding: 20px 30px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    color: #013c6e;
+    margin: 0;
+}
+
+.close-modal {
+    font-size: 28px;
+    cursor: pointer;
+    color: #777;
+    transition: color 0.3s;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .modal-body {
+        flex-direction: row;
+    }
+}
+
+.modal-image {
+    flex: 1;
+}
+
+.modal-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+}
+
+@media (min-width: 768px) {
+    .modal-image img {
+        height: 100%;
+        border-radius: 12px 0 0 12px;
+    }
+}
+
+.modal-text {
+    flex: 1;
+    padding: 30px;
+}
+
+.modal-text h3 {
+    color: #013c6e;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.modal-description {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    color: #333; /* BLACK TEXT in modal */
+}
+
+.modal-features {
+    margin-bottom: 25px;
+}
+
+.modal-features h4 {
+    color: #1e93e1;
+    margin-bottom: 10px;
+}
+
+.modal-features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.modal-features li {
+    padding: 8px 0;
+    padding-left: 25px;
+    position: relative;
+    color: #333; /* BLACK TEXT in modal */
+}
+
+.modal-features li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #1e93e1;
+    font-weight: bold;
+}
+
+.modal-cta {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #1e93e1;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid #1e93e1;
+}
+
+.cta-btn:hover {
+    background: #1478dc;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(30, 147, 225, 0.4);
+}
+
+.secondary-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: transparent;
+    color: #1e93e1;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid #1e93e1;
+}
+
+.secondary-btn:hover {
+    background: #1e93e1;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Updated Footer Styles */
 .footer {
     width: 100%;
