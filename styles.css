@@ -903,7 +903,7 @@ nav img {
         right: -250px;
         width: 250px;
         height: 100vh;
-        background: #000000;
+        background: linear-gradient(135deg, #013c6e 5%, #1478dc 100%);
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
         text-align: center;
         padding-top: 80px;
