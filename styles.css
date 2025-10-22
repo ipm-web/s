@@ -1064,11 +1064,18 @@ nav img {
     font-weight: 600;
 }
 
+.client-conveyor-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
 .client-conveyor {
     display: flex;
-    animation: scroll 30s linear infinite;
+    animation: scroll 40s linear infinite;
     gap: 60px;
     padding: 20px 0;
+    width: max-content;
 }
 
 .client-conveyor:hover {
@@ -1107,18 +1114,13 @@ nav img {
     opacity: 1;
 }
 
-/* Text version styling */
-.client-logo span {
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
+/* Infinite scroll animation */
 @keyframes scroll {
     0% {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-150px * 10 - 60px * 10));
+        transform: translateX(-50%);
     }
 }
 
@@ -1143,14 +1145,5 @@ nav img {
     
     .client-conveyor {
         gap: 40px;
-    }
-    
-    @keyframes scroll {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(calc(-120px * 10 - 40px * 10));
-        }
     }
 }
