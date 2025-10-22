@@ -31,7 +31,7 @@
             <div class="hamburger">☰</div>
             <div class="nav-links">
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html" class="active">Inicio</a></li>
                     <li><a href="servicios.html">Servicios</a></li>  
                     <li><a href="ubicacion.html">Contáctanos</a></li>
                     <li><a href="#nosotres">Nosotros</a></li>
@@ -96,6 +96,77 @@
             </div>
         </div>
         <a href="servicios.html" class="servicios-btn">Todos Nuestros Servicios</a>
+    </section>
+
+    <!-- Client Portfolio Section -->
+    <!-- Client Portfolio Section -->
+    <section class="client-portfolio">
+        <h2>Nuestros Clientes</h2>
+        <div class="client-conveyor">
+            <!-- You'll need to add actual logo images for these companies -->
+            <div class="client-logo" title="Sanoh">
+                <img src="Images/clients/sanoh-logo.png" alt="Sanoh" loading="lazy">
+            </div>
+            <div class="client-logo" title="TF Metal">
+                <img src="Images/clients/tf-metal-logo.png" alt="TF Metal" loading="lazy">
+            </div>
+            <div class="client-logo" title="Autoliv">
+                <img src="Images/clients/autoliv-logo.png" alt="Autoliv" loading="lazy">
+            </div>
+            <div class="client-logo" title="Tenneco">
+                <img src="Images/clients/tenneco-logo.png" alt="Tenneco" loading="lazy">
+            </div>
+            <div class="client-logo" title="Sensata">
+                <img src="Images/clients/sensata-logo.png" alt="Sensata" loading="lazy">
+            </div>
+            <div class="client-logo" title="Alpha Metal">
+                <img src="Images/clients/alpha-metal-logo.png" alt="Alpha Metal" loading="lazy">
+            </div>
+            <div class="client-logo" title="Orotex">
+                <img src="Images/clients/orotex-logo.png" alt="Orotex" loading="lazy">
+            </div>
+            <div class="client-logo" title="Judd Wire">
+                <img src="Images/clients/judd-wire-logo.png" alt="Judd Wire" loading="lazy">
+            </div>
+            <div class="client-logo" title="Teklas">
+                <img src="Images/clients/teklas-logo.png" alt="Teklas" loading="lazy">
+            </div>
+            <div class="client-logo" title="Vallen">
+                <img src="Images/clients/vallen-logo.png" alt="Vallen" loading="lazy">
+            </div>
+            
+            <!-- Duplicate for seamless loop -->
+            <div class="client-logo" title="Sanoh">
+                <img src="Images/clients/sanoh-logo.png" alt="Sanoh" loading="lazy">
+            </div>
+            <div class="client-logo" title="TF Metal">
+                <img src="Images/clients/tf-metal-logo.png" alt="TF Metal" loading="lazy">
+            </div>
+            <div class="client-logo" title="Autoliv">
+                <img src="Images/clients/autoliv-logo.png" alt="Autoliv" loading="lazy">
+            </div>
+            <div class="client-logo" title="Tenneco">
+                <img src="Images/clients/tenneco-logo.png" alt="Tenneco" loading="lazy">
+            </div>
+            <div class="client-logo" title="Sensata">
+                <img src="Images/clients/sensata-logo.png" alt="Sensata" loading="lazy">
+            </div>
+            <div class="client-logo" title="Alpha Metal">
+                <img src="Images/clients/alpha-metal-logo.png" alt="Alpha Metal" loading="lazy">
+            </div>
+            <div class="client-logo" title="Orotex">
+                <img src="Images/clients/orotex-logo.png" alt="Orotex" loading="lazy">
+            </div>
+            <div class="client-logo" title="Judd Wire">
+                <img src="Images/clients/judd-wire-logo.png" alt="Judd Wire" loading="lazy">
+            </div>
+            <div class="client-logo" title="Teklas">
+                <img src="Images/clients/teklas-logo.png" alt="Teklas" loading="lazy">
+            </div>
+            <div class="client-logo" title="Vallen">
+                <img src="Images/clients/vallen-logo.png" alt="Vallen" loading="lazy">
+            </div>
+        </div>
     </section>
 
     <section class="sobrenosotros" id="nosotres">
@@ -216,9 +287,32 @@
             const navLinks = document.querySelector('.nav-links');
             const navItems = navLinks.querySelectorAll('li a');
 
+            // Set active menu item based on current page
+            function setActiveMenuItem() {
+                const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+                const menuItems = document.querySelectorAll('.nav-links ul li a');
+                
+                menuItems.forEach(item => {
+                    item.classList.remove('active');
+                    const href = item.getAttribute('href');
+                    
+                    if (href === currentPage) {
+                        item.classList.add('active');
+                    }
+                    
+                    // Special handling for index page sections
+                    if (currentPage === 'index.html' && href.includes('#')) {
+                        item.classList.remove('active');
+                    }
+                });
+            }
+
+            // Set active menu item on load
+            setActiveMenuItem();
+
             // Toggle sidebar on hamburger click
             hamburger.addEventListener('click', function (e) {
-                e.stopPropagation(); // Prevent click from closing immediately
+                e.stopPropagation();
                 navLinks.classList.toggle('active');
             });
 
@@ -226,6 +320,11 @@
             navItems.forEach(item => {
                 item.addEventListener('click', function () {
                     navLinks.classList.remove('active');
+                    // Update active state
+                    document.querySelectorAll('.nav-links ul li a').forEach(i => {
+                        i.classList.remove('active');
+                    });
+                    this.classList.add('active');
                 });
             });
 
@@ -331,14 +430,6 @@
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-    </script>
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID'); -->
-    </script>
+        </script>
 </body>
-
-</html>
+</html> 
