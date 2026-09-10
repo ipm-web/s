@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verificar Pedido | Industrial Processes MADA</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="Images/ipm.png">
+<style>
+  :root {
+    --brand-blue: #1e93e1;
+    --brand-navy: #013c6e;
+    --brand-blue-dark: #186aa0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(rgba(4,9,30,0.85), rgba(4,9,30,0.85)), url('Images/cnc.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .card {
+    background: white;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 14px;
+    padding: 32px 28px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+    text-align: center;
+  }
+  .card img.logo { width: 90px; margin-bottom: 12px; }
+  h1 {
+    font-size: 1.1rem;
+    color: var(--brand-navy);
+    margin: 0 0 20px;
+  }
+  .search-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .search-row input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+  .search-row button {
+    background: var(--brand-blue);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .search-row button:hover { background: var(--brand-blue-dark); }
+
+  #result { text-align: left; }
+  .status-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+  .status-badge.ok { background: #e3f7e9; color: #1e8a4c; }
+  .status-badge.fail { background: #fdeaea; color: #c0392b; }
+
+  .field { margin-bottom: 10px; font-size: 0.98rem; color: #333; }
+  .field b { color: var(--brand-navy); }
+
+  #loading { color: #777; font-size: 0.95rem; }
+  .footer-note {
+    margin-top: 20px;
+    font-size: 0.78rem;
+    color: #999;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <img class="logo" src="Images/logo.png" alt="IPMada">
+    <h1>Verificación de Pedido</h1>
+
+    <div class="search-row">
+      <input type="text" id="orderInput" placeholder="Número de orden">
+      <button onclick="lookup()">Verificar</button>
+    </div>
+
+    <div id="result"></div>
+  </div>
+
+<script>
+  // ↓↓↓ Paste the "Web app URL" you get from Apps Script deployment here ↓↓↓
+  const API_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+  function getParam(name) {
+    const params = new URLSearchParams(window.location.search);
+    return params.get(name);
+  }
+
+  async function lookup(orderIdOverride) {
+    const orderId = orderIdOverride || document.getElementById('orderInput').value.trim();
+    const resultEl = document.getElementById('result');
+    if (!orderId) return;
+
+    resultEl.innerHTML = '<p id="loading">Verificando…</p>';
+
+    try {
+      const res = await fetch(`${API_URL}?orden=${encodeURIComponent(orderId)}`);
+      const data = await res.json();
+
+      if (data.found) {
+        resultEl.innerHTML = `
+          <div class="status-badge ok">✔ Pedido verificado</div>
+          <div class="field"><b>Orden:</b> ${data.OrderID ?? ''}</div>
+          <div class="field"><b>Fecha:</b> ${data.Date ?? ''}</div>
+          <div class="field"><b>Cliente:</b> ${data.Customer ?? ''}</div>
+          ${data.Status ? `<div class="field"><b>Estado:</b> ${data.Status}</div>` : ''}
+        `;
+      } else {
+        resultEl.innerHTML = `
+          <div class="status-badge fail">✘ No verificado</div>
+          <div class="field">No encontramos ningún pedido con ese número. Si crees que esto es un error, contáctanos directamente.</div>
+        `;
+      }
+    } catch (err) {
+      resultEl.innerHTML = `<div class="field">No se pudo verificar en este momento. Intenta de nuevo más tarde.</div>`;
+    }
+  }
+
+  // If the QR code linked here with ?orden=1234, auto-run the lookup
+  window.addEventListener('DOMContentLoaded', () => {
+    const fromUrl = getParam('orden') || getParam('id');
+    if (fromUrl) {
+      document.getElementById('orderInput').value = fromUrl;
+      lookup(fromUrl);
+    }
+  });
+</script>
+
+  <p style="text-align:center; margin-top:16px;">
+    <a href="index.html" style="color:#ccc; font-size:0.85rem;">← Volver al sitio</a>
+  </p>
+</body>
+</html>
