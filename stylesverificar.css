@@ -1,0 +1,508 @@
+/* =========================================================
+   stylesverificar.css
+   Estilos específicos para verificar.html
+   Basado en el lenguaje visual de styleservicios.css
+   ========================================================= */
+
+body {
+    background-color: #e2ebf6;
+}
+
+.tracking-page {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 35px 0 60px;
+}
+
+.tracking-page h1 {
+    color: #444;
+    font-size: clamp(24px, 4vw, 36px);
+    margin: 0 0 10px;
+}
+
+.tracking-intro {
+    color: #555 !important;
+    text-align: center !important;
+    font-size: clamp(14px, 1.8vw, 16px) !important;
+    margin: 0 auto 30px !important;
+}
+
+/* Contenedor principal */
+.tracking-box {
+    max-width: 1050px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .10);
+    overflow: hidden;
+    text-align: left;
+}
+
+/* Buscador */
+.tracking-search {
+    padding: 30px 35px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tracking-search label {
+    display: block;
+    color: #555;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.search-row {
+    display: flex;
+    gap: 12px;
+}
+
+.search-input-wrap {
+    position: relative;
+    flex: 1;
+}
+
+.search-input-wrap i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #1e93e1;
+}
+
+#orderInput {
+    width: 100%;
+    height: 50px;
+    padding: 0 15px 0 43px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #444;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    transition: .3s;
+    box-sizing: border-box;
+}
+
+#orderInput:focus {
+    border-color: #1e93e1;
+    box-shadow: 0 0 0 3px rgba(30, 147, 225, .12);
+}
+
+#orderInput::placeholder {
+    letter-spacing: 1px;
+    text-transform: none;
+    color: #999;
+}
+
+.search-button {
+    height: 50px;
+    padding: 0 28px;
+
+    border: 0;
+    border-radius: 4px;
+
+    background: #014c8e;
+    color: white;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+
+    cursor: pointer;
+    transition: background .3s, transform .2s;
+    white-space: nowrap;
+}
+
+.search-button:hover {
+    background: #002647;
+    transform: translateY(-1px);
+}
+
+.order-hint {
+    color: #777 !important;
+    text-align: left !important;
+    font-size: 12px !important;
+    margin: 9px 0 0 !important;
+}
+
+/* Área de resultados */
+#result {
+    padding: 35px;
+    min-height: 170px;
+}
+
+/* Estado inicial / cargando */
+.empty-state,
+.loading-state {
+    min-height: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+    flex-direction: column;
+
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+}
+
+.empty-state i {
+    color: #1e93e1;
+    font-size: 28px;
+}
+
+.loading-state {
+    flex-direction: row;
+}
+
+.loading {
+    display: inline-block;
+
+    width: 20px;
+    height: 20px;
+
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #1e93e1;
+    border-radius: 50%;
+
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Encabezado del resultado */
+.result-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.result-kicker {
+    color: #1e93e1 !important;
+    text-align: left !important;
+
+    font-size: 12px !important;
+    font-weight: 600;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    margin: 0 0 5px !important;
+}
+
+.order-number {
+    color: #444;
+
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 600;
+
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+/* Etiqueta del estado */
+.status {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 8px;
+    padding: 9px 15px;
+
+    border-radius: 4px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    white-space: nowrap;
+    border: 1px solid transparent;
+}
+
+/* En proceso */
+.status.processing {
+    color: #126ca7;
+    background: #eaf5fc;
+    border-color: #bfe0f5;
+}
+
+/* Entregado */
+.status.delivered {
+    color: #277b45;
+    background: #eaf7ee;
+    border-color: #c4e6cf;
+}
+
+/* Terminado */
+.status.finished {
+    color: #277b45;
+    background: #eaf7ee;
+    border-color: #c4e6cf;
+}
+
+/* Cancelado */
+.status.cancelled {
+    color: #a43834;
+    background: #fcedec;
+    border-color: #edc5c2;
+}
+
+/* Estado desconocido */
+.status.unknown {
+    color: #666;
+    background: #f2f2f2;
+    border-color: #ddd;
+}
+
+/* Información del pedido */
+.details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    border: 1px solid #ddd;
+    border-radius: 4px;
+
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.detail {
+    padding: 18px 20px;
+    background: #fafafa;
+
+    border-right: 1px solid #ddd;
+}
+
+.detail:last-child {
+    border-right: 0;
+}
+
+.detail-label {
+    display: block;
+
+    color: #777;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: .7px;
+    text-transform: uppercase;
+
+    margin-bottom: 5px;
+}
+
+.detail-value {
+    display: block;
+
+    color: #444;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    word-break: break-word;
+}
+
+/* Tarjeta del estado actual */
+.current-state {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+    padding: 22px;
+
+    border-radius: 6px;
+
+    border-left: 4px solid #1e93e1;
+    background: #f5f9fd;
+}
+
+.current-state.processing {
+    border-left-color: #1e93e1;
+    background: #f5f9fd;
+}
+
+.current-state.delivered,
+.current-state.finished {
+    border-left-color: #299650;
+    background: #f3faf5;
+}
+
+.current-state.cancelled {
+    border-left-color: #c7443e;
+    background: #fff5f4;
+}
+
+.current-state.unknown {
+    border-left-color: #777;
+    background: #f5f5f5;
+}
+
+/* Icono circular */
+.state-icon {
+    width: 55px;
+    height: 55px;
+
+    flex: 0 0 55px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: #1e93e1;
+    color: white;
+
+    font-size: 22px;
+}
+
+.state-icon.processing {
+    background: #1e93e1;
+}
+
+.state-icon.delivered,
+.state-icon.finished {
+    background: #299650;
+}
+
+.state-icon.cancelled {
+    background: #c7443e;
+}
+
+.state-icon.unknown {
+    background: #777;
+}
+
+.state-label {
+    color: #777;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: .7px;
+    text-transform: uppercase;
+}
+
+.state-value {
+    color: #444;
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.state-description {
+    color: #777 !important;
+
+    text-align: left !important;
+
+    font-size: 13px !important;
+
+    margin: 3px 0 0 !important;
+}
+
+/* Orden no encontrada / error */
+.unverified {
+    padding: 22px;
+
+    border-left: 4px solid #c7443e;
+    background: #fff5f4;
+
+    border-radius: 4px;
+}
+
+.unverified strong {
+    display: block;
+
+    color: #a43834;
+
+    font-size: 15px;
+
+    margin-bottom: 6px;
+}
+
+.unverified p {
+    color: #666 !important;
+
+    text-align: left !important;
+
+    font-size: 13px !important;
+    line-height: 1.6;
+
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tracking-page {
+        width: 90%;
+        padding: 30px 0 50px;
+    }
+
+    .tracking-search,
+    #result {
+        padding: 25px 20px;
+    }
+
+    .search-row {
+        flex-direction: column;
+    }
+
+    .search-button {
+        width: 100%;
+    }
+
+    .result-head {
+        flex-direction: column;
+    }
+
+    .details {
+        grid-template-columns: 1fr;
+    }
+
+    .detail {
+        border-right: 0;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .detail:last-child {
+        border-bottom: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .tracking-page h1 {
+        font-size: 27px;
+    }
+
+    .order-number {
+        font-size: 24px;
+    }
+
+    .current-state {
+        padding: 17px;
+    }
+
+    .state-icon {
+        width: 48px;
+        height: 48px;
+        flex-basis: 48px;
+        font-size: 19px;
+    }
+}
