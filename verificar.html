@@ -446,7 +446,7 @@
                 if (data.found) {
                     const order = escapeHtml(data.OrderID);
                     const fecha = escapeHtml(data.Date);
-                    const customer = escapeHtml(data.Customer);
+                    const tipo = escapeHtml(data.Type);
                     const rawStatus = String(data.Status || "En proceso");
                     const status = escapeHtml(rawStatus);
                     const config = getStatusConfig(rawStatus);
@@ -469,8 +469,8 @@
                                 <span class="verify-detail-value">${fecha || "—"}</span>
                             </div>
                             <div class="verify-detail">
-                                <span class="verify-detail-label">Cliente</span>
-                                <span class="verify-detail-value">${customer || "—"}</span>
+                                <span class="verify-detail-label">Tipo</span>
+                                <span class="verify-detail-value">${tipo || "—"}</span>
                             </div>
                             <div class="verify-detail">
                                 <span class="verify-detail-label">Orden</span>
