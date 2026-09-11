@@ -1,1063 +1,217 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex">
-    <title>Verificar Pedido | Industrial Processes MADA</title>
-    <link rel="icon" type="image/png" href="Images/ipm.png">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bytesized&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        :root {
-            --blue: #1e93e1;
-            --blue-dark: #0c6cae;
-            --navy: #013c6e;
-            --ink: #152536;
-            --muted: #6d7b88;
-            --line: #d9e3ed;
-            --surface: #ffffff;
-            --soft: #f4f8fc;
-            --success: #159447;
-            --success-soft: #e9f8ef;
-            --warning: #d88900;
-            --warning-soft: #fff6df;
-            --danger: #c53b35;
-            --danger-soft: #fff0ef;
-            --shadow: 0 15px 40px rgba(0, 38, 70, .12);
-        }
-
-        * { box-sizing: border-box; }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: "Poppins", sans-serif;
-            color: var(--ink);
-            background-color: #e2ebf6;
-        }
-
-        /* ===== NAVBAR - mismo lenguaje visual del sitio ===== */
-        .header {
-            min-height: 76px;
-            background: #013c6e;
-            position: relative;
-            z-index: 100;
-        }
-
-        nav {
-            width: min(1200px, 92%);
-            margin: auto;
-            min-height: 76px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        nav > a img {
-            width: 58px;
-            height: 58px;
-            object-fit: contain;
-            display: block;
-        }
-
-        .nav-links ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-size: .82rem;
-            font-weight: 500;
-            padding: 10px 11px;
-            border-radius: 8px;
-            transition: background .2s, color .2s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            background: rgba(255,255,255,.13);
-            color: #fff;
-        }
-
-        .hamburger {
-            display: none;
-            color: #fff;
-            font-size: 27px;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        /* ===== CONTENIDO ===== */
-        .tracking-section {
-            width: min(1050px, 92%);
-            margin: 55px auto 70px;
-        }
-
-        .tracking-heading {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .tracking-heading .eyebrow {
-            margin: 0 0 7px;
-            color: var(--blue-dark);
-            font-size: .75rem;
-            font-weight: 700;
-            letter-spacing: .15em;
-            text-transform: uppercase;
-        }
-
-        .tracking-heading h1 {
-            margin: 0;
-            color: var(--navy);
-            font-size: clamp(2rem, 5vw, 3rem);
-            line-height: 1.15;
-            font-weight: 700;
-        }
-
-        .tracking-heading p {
-            max-width: 650px;
-            margin: 12px auto 0;
-            color: var(--muted);
-            font-size: .95rem;
-            line-height: 1.7;
-        }
-
-        .tracking-card {
-            background: rgba(255,255,255,.98);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255,255,255,.8);
-        }
-
-        .search-area {
-            padding: 30px 34px;
-            background: linear-gradient(135deg, #ffffff, #f5f9fd);
-            border-bottom: 1px solid var(--line);
-        }
-
-        .search-label {
-            display: block;
-            margin-bottom: 9px;
-            color: var(--navy);
-            font-size: .82rem;
-            font-weight: 700;
-        }
-
-        .search-form {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 10px;
-        }
-
-        .input-wrap {
-            position: relative;
-        }
-
-        .input-wrap i {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #8293a2;
-            pointer-events: none;
-        }
-
-        .search-form input {
-            width: 100%;
-            height: 52px;
-            border: 1px solid #cbd8e4;
-            border-radius: 10px;
-            padding: 0 16px 0 45px;
-            outline: none;
-            background: #fff;
-            color: var(--ink);
-            font: inherit;
-            font-size: .92rem;
-            transition: border-color .2s, box-shadow .2s;
-        }
-
-        .search-form input:focus {
-            border-color: var(--blue);
-            box-shadow: 0 0 0 4px rgba(30,147,225,.12);
-        }
-
-        .search-form button {
-            height: 52px;
-            border: 0;
-            border-radius: 10px;
-            padding: 0 24px;
-            background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-            color: #fff;
-            font-family: inherit;
-            font-size: .88rem;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 7px 18px rgba(30,147,225,.2);
-            transition: transform .18s, box-shadow .18s;
-        }
-
-        .search-form button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 10px 22px rgba(30,147,225,.27);
-        }
-
-        .search-form button:active {
-            transform: translateY(0);
-        }
-
-        #result {
-            padding: 34px;
-            min-height: 180px;
-        }
-
-        .empty {
-            min-height: 110px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--muted);
-            font-size: .88rem;
-            gap: 10px;
-        }
-
-        .empty i {
-            color: #9cafbf;
-            font-size: 28px;
-        }
-
-        .loading {
-            min-height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 11px;
-            color: var(--muted);
-            font-size: .88rem;
-        }
-
-        .spinner {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #dce6ed;
-            border-top-color: var(--blue);
-            border-radius: 50%;
-            animation: spin .75s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* ===== RESULTADO ===== */
-        .result-head {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 18px;
-            margin-bottom: 22px;
-        }
-
-        .result-kicker {
-            margin: 0 0 5px;
-            color: var(--muted);
-            font-size: .7rem;
-            font-weight: 700;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-        }
-
-        .order-number {
-            margin: 0;
-            color: var(--navy);
-            font-size: 1.5rem;
-            font-weight: 700;
-            word-break: break-word;
-        }
-
-        .status {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            flex: 0 0 auto;
-            padding: 8px 13px;
-            border-radius: 999px;
-            font-size: .75rem;
-            font-weight: 700;
-            white-space: nowrap;
-        }
-
-        .status i {
-            font-size: .72rem;
-        }
-
-        .status.processing {
-            color: var(--blue-dark);
-            background: #e9f5fd;
-        }
-
-        .status.delivered,
-        .status.finished {
-            color: var(--success);
-            background: var(--success-soft);
-        }
-
-        .status.cancelled {
-            color: var(--danger);
-            background: var(--danger-soft);
-        }
-
-        .status.unknown {
-            color: #657482;
-            background: #edf2f5;
-        }
-
-        .details {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            border: 1px solid var(--line);
-            border-radius: 13px;
-            overflow: hidden;
-            margin-bottom: 24px;
-        }
-
-        .detail {
-            padding: 17px 18px;
-            background: var(--soft);
-            border-right: 1px solid var(--line);
-        }
-
-        .detail:last-child {
-            border-right: 0;
-        }
-
-        .detail-label {
-            display: block;
-            margin-bottom: 5px;
-            color: var(--muted);
-            font-size: .67rem;
-            font-weight: 700;
-            letter-spacing: .1em;
-            text-transform: uppercase;
-        }
-
-        .detail-value {
-            display: block;
-            color: var(--navy);
-            font-size: .88rem;
-            font-weight: 600;
-            word-break: break-word;
-        }
-
-        /* ===== ESTADO ===== */
-        .current-state {
-            border: 1px solid var(--line);
-            border-radius: 15px;
-            padding: 20px;
-            background: linear-gradient(135deg, #f8fbfe, #eef5fa);
-        }
-
-        .current-state.processing {
-            border-color: #cce5f5;
-            background: linear-gradient(135deg, #f8fcff, #edf7fd);
-        }
-
-        .current-state.delivered,
-        .current-state.finished {
-            border-color: #ccebd7;
-            background: linear-gradient(135deg, #fbfffc, #eefaf2);
-        }
-
-        .current-state.cancelled {
-            border-color: #f0cecb;
-            background: linear-gradient(135deg, #fffafa, #fff1f0);
-        }
-
-        .state-label {
-            color: var(--muted);
-            font-size: .68rem;
-            font-weight: 700;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-        }
-
-        .state-row {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-top: 10px;
-        }
-
-        .state-icon {
-            width: 45px;
-            height: 45px;
-            flex: 0 0 auto;
-            display: grid;
-            place-items: center;
-            border-radius: 12px;
-            color: #fff;
-            background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-            box-shadow: 0 7px 15px rgba(30,147,225,.18);
-        }
-
-        .state-icon i {
-            font-size: 19px;
-        }
-
-        .state-icon.delivered,
-        .state-icon.finished {
-            background: linear-gradient(135deg, #24a957, #12833e);
-            box-shadow: 0 7px 15px rgba(21,148,71,.17);
-        }
-
-        .state-icon.cancelled {
-            background: linear-gradient(135deg, #d34b44, #ad302b);
-            box-shadow: 0 7px 15px rgba(197,59,53,.17);
-        }
-
-        .state-value {
-            color: var(--navy);
-            font-size: 1.05rem;
-            font-weight: 700;
-        }
-
-        .state-description {
-            margin: 4px 0 0;
-            color: var(--muted);
-            font-size: .78rem;
-            line-height: 1.5;
-        }
-
-        /* ===== ERROR ===== */
-        .unverified {
-            padding: 22px;
-            border-radius: 13px;
-            background: var(--danger-soft);
-            border: 1px solid #f1cfcc;
-        }
-
-        .unverified strong {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--danger);
-            margin-bottom: 6px;
-            font-size: .9rem;
-        }
-
-        .unverified p {
-            margin: 0;
-            color: #6d4a48;
-            line-height: 1.6;
-            font-size: .82rem;
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            background: #013c6e;
-            color: #fff;
-            padding: 48px 0 34px;
-        }
-
-        .footer-content {
-            width: min(1100px, 90%);
-            margin: auto;
-            display: grid;
-            grid-template-columns: 1.4fr 1fr 1fr;
-            gap: 45px;
-        }
-
-        .footer-section h3,
-        .footer-section h4 {
-            margin: 0 0 13px;
-        }
-
-        .footer-section h3 {
-            font-size: 1.05rem;
-        }
-
-        .footer-section h4 {
-            font-size: .92rem;
-        }
-
-        .footer-section p {
-            margin: 0 0 8px;
-            color: rgba(255,255,255,.72);
-            font-size: .78rem;
-            line-height: 1.6;
-        }
-
-        .contact-info a,
-        .footer-section a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 12px;
-            margin-top: 15px;
-        }
-
-        .social-links a {
-            width: 34px;
-            height: 34px;
-            display: grid;
-            place-items: center;
-            border-radius: 50%;
-            background: rgba(255,255,255,.1);
-            transition: background .2s, transform .2s;
-        }
-
-        .social-links a:hover {
-            background: rgba(255,255,255,.2);
-            transform: translateY(-2px);
-        }
-
-        .contact-info i {
-            width: 18px;
-            margin-right: 4px;
-        }
-
-        .footer-bottom {
-            background: #012f55;
-            padding: 15px 10px;
-            text-align: center;
-        }
-
-        .footer-bottom p {
-            margin: 0;
-            color: rgba(255,255,255,.62);
-            font-size: .7rem;
-        }
-
-        .footer-bottom a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 850px) {
-            .nav-links ul {
-                gap: 0;
-            }
-
-            .nav-links a {
-                padding: 9px 7px;
-                font-size: .74rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .footer-section:first-child {
-                grid-column: 1 / -1;
-            }
-        }
-
-        @media (max-width: 700px) {
-            .header,
-            nav {
-                min-height: 70px;
-            }
-
-            nav {
-                width: 90%;
-            }
-
-            nav > a img {
-                width: 53px;
-                height: 53px;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 70px;
-                right: 0;
-                width: min(280px, 82vw);
-                padding: 12px;
-                background: #013c6e;
-                border-radius: 0 0 0 14px;
-                box-shadow: 0 15px 30px rgba(0,0,0,.2);
-                display: none;
-            }
-
-            .nav-links.active {
-                display: block;
-            }
-
-            .nav-links ul {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .nav-links li {
-                width: 100%;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 12px 13px;
-                font-size: .82rem;
-            }
-
-            .tracking-section {
-                width: 92%;
-                margin: 38px auto 55px;
-            }
-
-            .tracking-heading h1 {
-                font-size: 2rem;
-            }
-
-            .tracking-heading p {
-                font-size: .86rem;
-            }
-
-            .search-area,
-            #result {
-                padding: 24px 20px;
-            }
-
-            .search-form {
-                grid-template-columns: 1fr;
-            }
-
-            .search-form button {
-                width: 100%;
-            }
-
-            .result-head {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .status {
-                align-self: flex-start;
-            }
-
-            .details {
-                grid-template-columns: 1fr;
-            }
-
-            .detail {
-                border-right: 0;
-                border-bottom: 1px solid var(--line);
-            }
-
-            .detail:last-child {
-                border-bottom: 0;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 28px;
-            }
-
-            .footer-section:first-child {
-                grid-column: auto;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seguimiento de Proyecto | Industrial Processes MADA</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="Images/ipm.png">
+
+
+<style>
+/* Estilos propios de Verificar, usando el lenguaje visual de servicios.css */
+.tracking-page{width:80%;margin:auto;text-align:center;padding:25px 0 45px}
+.tracking-page h1{font-size:clamp(24px,4vw,36px);margin-bottom:10px;color:#444}
+.tracking-intro{color:#555!important;text-align:center!important;font-size:clamp(14px,1.8vw,16px)!important;margin-bottom:25px!important}
+.tracking-box{max-width:1050px;margin:auto;background:#fff;border-radius:10px;box-shadow:0 4px 15px rgba(0,0,0,.1);overflow:hidden;text-align:left}
+.tracking-search{padding:30px 35px;border-bottom:1px solid #ddd}
+.tracking-search label{display:block;color:#555;font-size:15px;font-weight:600;margin-bottom:8px}
+.search-row{display:flex;gap:12px}
+.search-input-wrap{position:relative;flex:1}
+.search-input-wrap i{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:#1e93e1}
+#orderInput{width:100%;height:50px;padding:0 15px 0 43px;border:1px solid #ddd;border-radius:4px;outline:none;font:500 15px "Poppins",sans-serif;color:#444;letter-spacing:2px;text-transform:uppercase}
+#orderInput:focus{border-color:#1e93e1;box-shadow:0 0 0 3px rgba(30,147,225,.12)}
+.search-button{height:50px;padding:0 28px;border:0;border-radius:4px;background:#014c8e;color:#fff;font:15px "Poppins",sans-serif;cursor:pointer;transition:.3s}
+.search-button:hover{background:#002647;transform:translateY(-1px)}
+.order-hint{color:#777!important;text-align:left!important;font-size:12px!important;margin:9px 0 0!important}
+#result{padding:35px;min-height:150px}
+.empty-state,.loading-state{min-height:90px;display:flex;align-items:center;justify-content:center;gap:10px;flex-direction:column;text-align:center;color:#777;font-size:14px}
+.empty-state i{color:#1e93e1;font-size:28px}.loading-state{flex-direction:row}
+.result-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:22px}
+.result-kicker{color:#1e93e1!important;text-align:left!important;font-size:12px!important;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin:0 0 5px!important}
+.order-number{color:#013c6e;font-size:clamp(24px,4vw,32px);font-weight:600;letter-spacing:2px;margin:0}
+.status{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:20px;font-size:13px;font-weight:600;white-space:nowrap}
+.status.processing{color:#126ca7;background:#eaf5fc}.status.delivered,.status.finished{color:#277b45;background:#eaf7ee}.status.cancelled{color:#a43834;background:#fcedec}.status.unknown{color:#666;background:#f2f2f2}
+.details{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid #ddd;border-radius:8px;overflow:hidden;margin-bottom:25px}
+.detail{padding:18px 20px;background:#fafafa;border-right:1px solid #ddd}.detail:last-child{border-right:0}
+.detail-label{display:block;color:#777;font-size:11px;font-weight:600;letter-spacing:.7px;text-transform:uppercase;margin-bottom:5px}
+.detail-value{display:block;color:#444;font-size:14px;font-weight:500;word-break:break-word}
+.current-state{display:flex;align-items:center;gap:18px;padding:22px;border-radius:8px;border-left:4px solid #1e93e1;background:#f5f9fd}
+.current-state.delivered,.current-state.finished{border-left-color:#299650;background:#f3faf5}.current-state.cancelled{border-left-color:#c7443e;background:#fff5f4}
+.state-icon{width:52px;height:52px;flex:0 0 52px;display:grid;place-items:center;border-radius:50%;background:#1e93e1;color:#fff;font-size:21px}
+.state-icon.delivered,.state-icon.finished{background:#299650}.state-icon.cancelled{background:#c7443e}
+.state-label{color:#777;font-size:11px;font-weight:600;letter-spacing:.7px;text-transform:uppercase}.state-value{color:#444;font-size:18px;font-weight:600}
+.state-description{color:#777!important;text-align:left!important;font-size:13px!important;margin:3px 0 0!important}
+.unverified{padding:22px;border-left:4px solid #c7443e;background:#fff5f4;border-radius:4px}.unverified strong{display:block;color:#a43834;font-size:15px;margin-bottom:6px}.unverified p{color:#666!important;text-align:left!important;font-size:13px!important;line-height:1.6;margin:0}
+@media(max-width:768px){.tracking-page{width:90%}.tracking-search,#result{padding:25px 20px}.search-row{flex-direction:column}.search-button{width:100%}.result-head{flex-direction:column}.details{grid-template-columns:1fr}.detail{border-right:0;border-bottom:1px solid #ddd}.detail:last-child{border-bottom:0}}
+</style>
 </head>
 
 <body>
+<section class="header"><nav>
+<a href="index.html"><img src="Images/logo.png" alt="Logo"></a>
+<div class="hamburger">☰</div>
+<div class="nav-links"><ul>
+<li><a href="index.html">Inicio</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="ubicacion.html">Contáctanos</a></li><li><a href="index.html#nosotres">Nosotros</a></li><li><a href="verificar.html" class="active">Verificar Pedido</a></li><li><a href="https://www.instagram.com/ipmada?igsh=eGtvdHd2MjZtZnh2" target="_blank">Instagram</a></li>
+</ul></div></nav></section>
+<main><section class="tracking-page">
+<h1>Verificar Pedido</h1>
+<p class="tracking-intro">Consulta el estado de tu proyecto ingresando el número de orden.</p>
+<div class="tracking-box"><div class="tracking-search">
+<label for="orderInput">Número de orden</label>
+<form id="orderForm"><div class="search-row"><div class="search-input-wrap"><i class="fas fa-search"></i><input type="text" id="orderInput" placeholder="Ej. F42T7G" maxlength="6" autocomplete="off" spellcheck="false"></div><button type="submit" class="search-button"><i class="fas fa-search"></i>&nbsp; Consultar</button></div></form>
+<p class="order-hint">Código de 6 caracteres. Ejemplo: <strong>F42T7G</strong></p>
+</div><div id="result"><div class="empty-state"><i class="far fa-clipboard"></i><span>Introduce tu número de orden para comenzar.</span></div></div></div>
+</section></main>
+<div class="footer"><div class="footer-content"><div class="footer-section"><h3>Industrial Processes MADA</h3><p>Especialistas en procesos industriales de alta calidad</p></div><div class="footer-section"><h4>Contacto</h4><div class="contact-info"><p><i class="fas fa-phone"></i><a href="tel:+524491782777">449 178 2777</a></p><p><i class="fas fa-envelope"></i><a href="mailto:rauluvario63@gmail.com">rauluvario63@gmail.com</a></p></div></div><div class="footer-section"><h4>Horario</h4><div class="business-hours"><p>Lun - Vie: 8:00 AM - 6:00 PM</p><p>Sábado: Consultar</p><p>Domingo: Consultar</p></div></div></div></div>
+<footer class="footer-bottom"><p>&copy; 2025 Industrial Processes MADA S.A. de C.V. | <a href="https://www.instagram.com/ipmada">Instagram</a></p></footer>
+<script>
+  // Web App URL de Google Apps Script
+  const API_URL = "https://script.google.com/macros/s/AKfycbwS2hQkH1uraT2l3PP8a4loYYsaKHfahhG9NcYx_37V22b_Wy49GPaMxpRX8c9M-HpKlg/exec";
 
-    <section class="header">
-        <nav>
-            <a href="index.html">
-                <img src="Images/logo.png" alt="Logo Industrial Processes MADA">
-            </a>
+  function getParam(name) {
+    const params = new URLSearchParams(window.location.search);
+    return params.get(name);
+  }
 
-            <div class="hamburger" aria-label="Abrir menú">☰</div>
+  function escapeHtml(value) {
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
 
-            <div class="nav-links">
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="servicios.html">Servicios</a></li>
-                    <li><a href="ubicacion.html">Contáctanos</a></li>
-                    <li><a href="index.html#nosotres">Nosotros</a></li>
-                    <li><a href="verificar.html" class="active">Verificar Pedido</a></li>
-                    <li>
-                        <a href="https://www.instagram.com/ipmada?igsh=eGtvdHd2MjZtZnh2"
-                           target="_blank" rel="noopener">Instagram</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </section>
 
-    <main>
-        <section class="tracking-section">
+  function normalizeStatus(value) {
+    return String(value || "").trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+  }
+  function getStatusConfig(status) {
+    const s=normalizeStatus(status);
+    if(s.includes("cancel")||s.includes("anulad")) return {type:"cancelled",icon:"fa-circle-xmark",description:"El pedido ha sido cancelado."};
+    if(s.includes("entreg")||s.includes("delivery")) return {type:"delivered",icon:"fa-box-open",description:"El pedido ha sido entregado correctamente."};
+    if(s.includes("termin")||s.includes("finaliz")||s.includes("complet")||s.includes("finished")) return {type:"finished",icon:"fa-circle-check",description:"El proyecto ha sido terminado correctamente."};
+    if(s.includes("proceso")||s.includes("produccion")||s.includes("pendiente")||s.includes("revision")) return {type:"processing",icon:"fa-gears",description:"El proyecto se encuentra actualmente en proceso."};
+    return {type:"unknown",icon:"fa-circle-info",description:"Consulta la información del pedido para conocer su estado actual."};
+  }
+  function loading() {
+    document.getElementById("result").innerHTML = `
+      <div class="loading">
+        <span class="spinner"></span>
+        <span>Consultando información…</span>
+      </div>
+    `;
+  }
 
-            <div class="tracking-heading">
-                <p class="eyebrow">Seguimiento de proyecto</p>
-                <h1>Verificar Pedido</h1>
-                <p>
-                    Ingresa el número de orden para consultar la información
-                    y conocer el estado actual de tu proyecto.
-                </p>
-            </div>
+  async function lookup(orderIdOverride) {
+    const input = document.getElementById("orderInput");
+    const orderId = orderIdOverride || input.value.trim();
 
-            <div class="tracking-card">
+    if (!orderId) {
+      input.focus();
+      return;
+    }
 
-                <div class="search-area">
-                    <label class="search-label" for="orderInput">
-                        Número de orden
-                    </label>
+    loading();
 
-                    <form class="search-form" onsubmit="event.preventDefault(); lookup();">
-                        <div class="input-wrap">
-                            <i class="fas fa-magnifying-glass"></i>
-                            <input
-                                type="text"
-                                id="orderInput"
-                                placeholder="Ej. ORD-001"
-                                autocomplete="off"
-                                inputmode="text"
-                                aria-label="Número de orden"
-                            >
-                        </div>
+    try {
+      const res = await fetch(`${API_URL}?orden=${encodeURIComponent(orderId)}`);
 
-                        <button type="submit">
-                            <i class="fas fa-search"></i>
-                            &nbsp; Consultar
-                        </button>
-                    </form>
-                </div>
+      if (!res.ok) {
+        throw new Error("HTTP " + res.status);
+      }
 
-                <div id="result">
-                    <div class="empty">
-                        <i class="far fa-clipboard"></i>
-                        <span>Introduce tu número de orden para comenzar.</span>
-                    </div>
-                </div>
+      const data = await res.json();
 
-            </div>
-        </section>
-    </main>
+      if (data.found) {
+        const order = escapeHtml(data.OrderID);
+        const date = escapeHtml(data.Date);
+        const customer = escapeHtml(data.Customer);
+        const rawStatus = String(data.Status || "En proceso");
+        const status = escapeHtml(rawStatus);
+        const config = getStatusConfig(rawStatus);
 
-    <div class="footer">
-        <div class="footer-content">
-
-            <div class="footer-section">
-                <h3>Industrial Processes MADA</h3>
-                <p>Especialistas en procesos industriales de alta calidad</p>
-                <div class="social-links">
-                    <a href="https://www.instagram.com/ipmada"
-                       target="_blank" rel="noopener" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="footer-section">
-                <h4>Contacto</h4>
-                <div class="contact-info">
-                    <p>
-                        <i class="fas fa-phone"></i>
-                        <u><a href="tel:+524491782777">449 178 2777</a></u>
-                        &nbsp;|&nbsp;
-                        <a href="https://wa.me/+524491782777?text=Buen%20Día!%20Me%20interesaria%20realizar%20una%20cotización%13"
-                           target="_blank" rel="noopener">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </a>
-                    </p>
-                    <p>
-                        <i class="fas fa-envelope"></i>
-                        <u><a href="mailto:rauluvario63@gmail.com">rauluvario63@gmail.com</a></u>
-                    </p>
-                    <p>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <u><a href="https://maps.app.goo.gl/CNw7VK5QKC6rkBScA"
-                              target="_blank">Aguascalientes, México</a></u>
-                    </p>
-                </div>
+        document.getElementById("result").innerHTML = `
+          <div class="result-head">
+            <div>
+              <p class="result-kicker">Orden localizada</p>
+              <h2 class="order-number">${order || "Sin número"}</h2>
             </div>
 
-            <div class="footer-section">
-                <h4>Horario</h4>
-                <div class="business-hours">
-                    <p>Lun - Vie: 8:00 AM - 6:00 PM</p>
-                    <p>Sábado: Consultar</p>
-                    <p>Domingo: Consultar</p>
-                </div>
+            <div class="status ok">
+              <span>✓</span>
+              Pedido verificado
+            </div>
+          </div>
+
+          <div class="details">
+            <div class="detail">
+              <span class="detail-label">Fecha</span>
+              <span class="detail-value">${date || "—"}</span>
             </div>
 
+            <div class="detail">
+              <span class="detail-label">Cliente</span>
+              <span class="detail-value">${customer || "—"}</span>
+            </div>
+
+            <div class="detail">
+              <span class="detail-label">Orden</span>
+              <span class="detail-value">${order || "—"}</span>
+            </div>
+          </div>
+
+          <div class="current-state">
+            <div class="state-label">Estado actual</div>
+            <div class="state-row">
+              <div class="state-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 8v4l3 2"></path>
+                  <circle cx="12" cy="12" r="9"></circle>
+                </svg>
+              </div>
+              <div><div class="state-value">${status}</div><p class="state-description">${escapeHtml(config.description)}</p></div>
+            </div>
+          </div>
+        `;
+      } else {
+        document.getElementById("result").innerHTML = `
+          <div class="unverified">
+            <strong>✕ No encontramos esta orden</strong>
+            <p>
+              No encontramos ningún pedido con el número
+              <b>${escapeHtml(orderId)}</b>.
+              Verifica que el número sea correcto o contáctanos directamente.
+            </p>
+          </div>
+        `;
+      }
+    } catch (err) {
+      console.error(err);
+
+      document.getElementById("result").innerHTML = `
+        <div class="unverified">
+          <strong>No fue posible realizar la consulta</strong>
+          <p>
+            El servicio no respondió correctamente. Intenta nuevamente
+            en unos momentos.
+          </p>
         </div>
-    </div>
+      `;
+    }
+  }
 
-    <footer class="footer-bottom">
-        <p>
-            &copy; 2025 Industrial Processes MADA S.A. de C.V. |
-            <a href="https://www.instagram.com/ipmada?igsh=eGtvdHd2MjZtZnh2"
-               target="_blank" rel="noopener">Instagram</a>
-        </p>
-    </footer>
+  window.addEventListener("DOMContentLoaded", () => {
+    const input = document.getElementById("orderInput");
+    input.addEventListener("input", () => { input.value=input.value.toUpperCase().replace(/[^A-Z0-9]/g,"").slice(0,6); });
+    const fromUrl = getParam("orden") || getParam("id");
 
-    <script>
-        // Web App URL de Google Apps Script
-        const API_URL = "https://script.google.com/macros/s/AKfycbwS2hQkH1uraT2l3PP8a4loYYsaKHfahhG9NcYx_37V22b_Wy49GPaMxpRX8c9M-HpKlg/exec";
-
-        function getParam(name) {
-            const params = new URLSearchParams(window.location.search);
-            return params.get(name);
-        }
-
-        function escapeHtml(value) {
-            return String(value ?? "")
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
-        }
-
-        function normalizeStatus(value) {
-            return String(value ?? "")
-                .trim()
-                .toLowerCase()
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "");
-        }
-
-        function getStatusConfig(status) {
-            const normalized = normalizeStatus(status);
-
-            if (
-                normalized.includes("cancel") ||
-                normalized.includes("anulad")
-            ) {
-                return {
-                    type: "cancelled",
-                    icon: "fa-circle-xmark",
-                    label: status || "Cancelado",
-                    description: "El pedido ha sido cancelado."
-                };
-            }
-
-            if (
-                normalized.includes("entreg") ||
-                normalized.includes("delivery")
-            ) {
-                return {
-                    type: "delivered",
-                    icon: "fa-box-open",
-                    label: status || "Entregado",
-                    description: "El pedido ha sido entregado correctamente."
-                };
-            }
-
-            if (
-                normalized.includes("termin") ||
-                normalized.includes("finaliz") ||
-                normalized.includes("complet") ||
-                normalized.includes("finished")
-            ) {
-                return {
-                    type: "finished",
-                    icon: "fa-circle-check",
-                    label: status || "Terminado",
-                    description: "El proyecto ha sido terminado correctamente."
-                };
-            }
-
-            if (
-                normalized.includes("proceso") ||
-                normalized.includes("produccion") ||
-                normalized.includes("producción") ||
-                normalized.includes("pendiente") ||
-                normalized.includes("revision") ||
-                normalized.includes("revisión")
-            ) {
-                return {
-                    type: "processing",
-                    icon: "fa-gears",
-                    label: status || "En proceso",
-                    description: "El proyecto se encuentra actualmente en proceso."
-                };
-            }
-
-            return {
-                type: "unknown",
-                icon: "fa-circle-info",
-                label: status || "Estado no especificado",
-                description: "Consulta la información del pedido para conocer su estado actual."
-            };
-        }
-
-        function loading() {
-            document.getElementById("result").innerHTML = `
-                <div class="loading">
-                    <span class="spinner"></span>
-                    <span>Consultando información…</span>
-                </div>
-            `;
-        }
-
-        async function lookup(orderIdOverride) {
-            const input = document.getElementById("orderInput");
-            const orderId = orderIdOverride || input.value.trim();
-
-            if (!orderId) {
-                input.focus();
-                return;
-            }
-
-            loading();
-
-            try {
-                const res = await fetch(
-                    `${API_URL}?orden=${encodeURIComponent(orderId)}`
-                );
-
-                if (!res.ok) {
-                    throw new Error("HTTP " + res.status);
-                }
-
-                const data = await res.json();
-
-                if (data.found) {
-                    const order = escapeHtml(data.OrderID);
-                    const date = escapeHtml(data.Date);
-                    const customer = escapeHtml(data.Customer);
-                    const rawStatus = String(data.Status || "En proceso");
-                    const status = escapeHtml(rawStatus);
-                    const config = getStatusConfig(rawStatus);
-
-                    document.getElementById("result").innerHTML = `
-                        <div class="result-head">
-                            <div>
-                                <p class="result-kicker">Orden localizada</p>
-                                <h2 class="order-number">${order || "Sin número"}</h2>
-                            </div>
-
-                            <div class="status ${config.type}">
-                                <i class="fas ${config.icon}"></i>
-                                <span>${status}</span>
-                            </div>
-                        </div>
-
-                        <div class="details">
-                            <div class="detail">
-                                <span class="detail-label">Fecha</span>
-                                <span class="detail-value">${date || "—"}</span>
-                            </div>
-
-                            <div class="detail">
-                                <span class="detail-label">Cliente</span>
-                                <span class="detail-value">${customer || "—"}</span>
-                            </div>
-
-                            <div class="detail">
-                                <span class="detail-label">Orden</span>
-                                <span class="detail-value">${order || "—"}</span>
-                            </div>
-                        </div>
-
-                        <div class="current-state ${config.type}">
-                            <div class="state-label">Estado actual</div>
-
-                            <div class="state-row">
-                                <div class="state-icon ${config.type}">
-                                    <i class="fas ${config.icon}"></i>
-                                </div>
-
-                                <div>
-                                    <div class="state-value">${status}</div>
-                                    <p class="state-description">
-                                        ${escapeHtml(config.description)}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                } else {
-                    document.getElementById("result").innerHTML = `
-                        <div class="unverified">
-                            <strong>
-                                <i class="fas fa-circle-xmark"></i>
-                                No encontramos esta orden
-                            </strong>
-                            <p>
-                                No encontramos ningún pedido con el número
-                                <b>${escapeHtml(orderId)}</b>.
-                                Verifica que el número sea correcto o contáctanos directamente.
-                            </p>
-                        </div>
-                    `;
-                }
-            } catch (err) {
-                console.error(err);
-
-                document.getElementById("result").innerHTML = `
-                    <div class="unverified">
-                        <strong>
-                            <i class="fas fa-triangle-exclamation"></i>
-                            No fue posible realizar la consulta
-                        </strong>
-                        <p>
-                            El servicio no respondió correctamente. Intenta nuevamente
-                            en unos momentos.
-                        </p>
-                    </div>
-                `;
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const hamburger = document.querySelector(".hamburger");
-            const navLinks = document.querySelector(".nav-links");
-
-            hamburger.addEventListener("click", (e) => {
-                e.stopPropagation();
-                navLinks.classList.toggle("active");
-            });
-
-            navLinks.querySelectorAll("a").forEach(item => {
-                item.addEventListener("click", () => {
-                    navLinks.classList.remove("active");
-                });
-            });
-
-            document.addEventListener("click", (e) => {
-                if (
-                    !navLinks.contains(e.target) &&
-                    !hamburger.contains(e.target)
-                ) {
-                    navLinks.classList.remove("active");
-                }
-            });
-
-            const fromUrl = getParam("orden") || getParam("id");
-
-            if (fromUrl) {
-                document.getElementById("orderInput").value = fromUrl;
-                lookup(fromUrl);
-            }
-        });
-    </script>
-
+    if (fromUrl) {
+      document.getElementById("orderInput").value = fromUrl;
+      lookup(fromUrl);
+    }
+  });
+</script>
 </body>
 </html>
