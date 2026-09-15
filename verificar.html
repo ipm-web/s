@@ -284,19 +284,27 @@
 
         .verify-unverified p { margin: 0; color: #6d4a48; line-height: 1.6; font-size: 0.82rem; }
 
-        .verify-note {
-            margin-top: 16px;
-            padding: 14px 16px;
-            border-radius: 10px;
-            background: #f7fafc;
-            border: 1px solid #e3e9ef;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
+        /* La nota para el cliente ahora vive DENTRO de la misma tarjeta
+           de estado (verify-state), como una línea más — separada del
+           texto de arriba por un borde sutil, en vez de una caja aparte
+           que se sentía desconectada del resto. */
+        .verify-state-note {
+            margin: 8px 0 0;
+            padding-top: 8px;
+            border-top: 1px solid rgba(1, 60, 110, 0.12);
+            color: #3f4f5e;
+            font-size: 0.8rem;
+            line-height: 1.55;
+            font-style: italic;
         }
-
-        .verify-note i { color: #1e93e1; margin-top: 2px; }
-        .verify-note p { margin: 0; color: #4a5a68; font-size: 0.85rem; line-height: 1.55; }
+        .verify-state-note::before {
+            content: "\201C";
+            font-style: normal;
+            font-weight: 700;
+            margin-right: 2px;
+            color: inherit;
+            opacity: 0.6;
+        }
 
         @media (max-width: 700px) {
             .verify-section { width: 92%; }
@@ -389,7 +397,7 @@
     </footer>
 
     <script>
-        const API_URL = "https://script.google.com/macros/s/AKfycbwcm31_L4b7hTJLFY-LBGTZwm1NEvqqEf5H3WFZYO_aNh25CvN53yUp83Wvm6SEzRBI9A/exec";
+        const API_URL = "https://script.google.com/macros/s/AKfycbzuHgtwp6vCRCJq21X4M-dmwMoPhmx_sU5rk5AG8ItEhAQV9MbqCWcWlpKMBHUiNCr9Yw/exec";
 
         function getParam(name) {
             const params = new URLSearchParams(window.location.search);
@@ -500,14 +508,9 @@
                             <div>
                                 <div class="verify-state-value">${status}</div>
                                 <p class="verify-state-desc">${escapeHtml(config.description)}</p>
+                                ${publicNote ? `<p class="verify-state-note">${publicNote}</p>` : ''}
                             </div>
                         </div>
-
-                        ${publicNote ? `
-                        <div class="verify-note">
-                            <i class="far fa-comment-dots"></i>
-                            <p>${publicNote}</p>
-                        </div>` : ''}
                     `;
                 } else {
                     document.getElementById("result").innerHTML = `
