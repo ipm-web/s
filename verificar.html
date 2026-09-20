@@ -25,6 +25,8 @@
             --status-danger-soft: #fdeceb;
             --status-unknown: #657482;
             --status-unknown-soft: #edf2f5;
+            --status-closed: #4b5a68;
+            --status-closed-soft: #e8eaed;
         }
 
         .verify-section {
@@ -179,6 +181,24 @@
             word-break: break-word;
         }
 
+        /* El Tipo (Proyecto/Pieza) es binario — se muestra como una
+           etiqueta chiquita junto al número, no como una ficha de datos
+           más, para no dar la impresión de que hay un catálogo grande
+           de tipos de pieza. */
+        .verify-type-tag {
+            display: inline-block;
+            margin-left: 8px;
+            padding: 2px 10px;
+            border-radius: 999px;
+            background: #eef3f8;
+            color: #4a5a68;
+            font-size: 0.68rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            vertical-align: middle;
+        }
+
         .verify-status-badge {
             display: inline-flex;
             align-items: center;
@@ -195,10 +215,11 @@
         .verify-status-badge.finished   { color: var(--status-done); background: var(--status-done-soft); }
         .verify-status-badge.cancelled  { color: var(--status-danger); background: var(--status-danger-soft); }
         .verify-status-badge.unknown    { color: var(--status-unknown); background: var(--status-unknown-soft); }
+        .verify-status-badge.closed     { color: var(--status-closed); background: var(--status-closed-soft); }
 
         .verify-details {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             border: 1px solid #e3e9ef;
             border-radius: 10px;
             overflow: hidden;
@@ -245,6 +266,7 @@
         .verify-state.finished   { background: var(--status-done-soft); border-color: #cbe9e9; }
         .verify-state.cancelled  { background: var(--status-danger-soft); border-color: #f2d2cf; }
         .verify-state.unknown    { background: var(--status-unknown-soft); border-color: #dde5ea; }
+        .verify-state.closed     { background: var(--status-closed-soft); border-color: #d7dbe0; }
 
         .verify-state-icon {
             width: 42px;
@@ -262,6 +284,7 @@
         .verify-state-icon.finished   { background: linear-gradient(135deg, #15a3a3, #0c6e6e); }
         .verify-state-icon.cancelled  { background: linear-gradient(135deg, #d34b44, #ad302b); }
         .verify-state-icon.unknown    { background: linear-gradient(135deg, #8293a2, #657482); }
+        .verify-state-icon.closed     { background: linear-gradient(135deg, #5a6b7a, #3f4c58); }
 
         .verify-state-value { color: #013c6e; font-size: 1rem; font-weight: 700; }
         .verify-state-desc { margin: 3px 0 0; color: #6d7b88; font-size: 0.78rem; line-height: 1.5; }
@@ -397,7 +420,7 @@
     </footer>
 
     <script>
-        const API_URL = "https://script.google.com/macros/s/AKfycbwG3rQWIsJYHlCP9DCxKBcLqTCJvt1D78ZlMCOT9jjulcf1zGEnmn3nT_QPlbpQPEjVWg/exec";
+        const API_URL = "https://script.google.com/macros/s/AKfycby3ZyxWZkQulgRJ7g48-L6_llrWqUPNjRiXvlG-TC2NA73gqUq-5GihJJ1an3cY4o5RXg/exec";
 
         function getParam(name) {
             const params = new URLSearchParams(window.location.search);
@@ -427,6 +450,10 @@
             if (normalized.includes("cancel") || normalized.includes("anulad")) {
                 return { type: "cancelled", icon: "fa-circle-xmark", label: status || "Cancelado",
                          description: "El pedido ha sido cancelado." };
+            }
+            if (normalized.includes("cerrad") || normalized.includes("cerrar")) {
+                return { type: "closed", icon: "fa-box-archive", label: status || "Cerrado",
+                         description: "El pedido quedó cerrado." };
             }
             if (normalized.includes("entreg") || normalized.includes("delivery")) {
                 return { type: "delivered", icon: "fa-box-open", label: status || "Entregado",
@@ -478,7 +505,10 @@
                         <div class="verify-result-head">
                             <div>
                                 <p class="verify-kicker">Orden localizada</p>
-                                <h2 class="verify-order-number">${order || "Sin número"}</h2>
+                                <h2 class="verify-order-number">
+                                    ${order || "Sin número"}
+                                    ${tipo ? `<span class="verify-type-tag">${tipo}</span>` : ''}
+                                </h2>
                             </div>
                             <div class="verify-status-badge ${config.type}">
                                 <i class="fas ${config.icon}"></i>
@@ -490,10 +520,6 @@
                             <div class="verify-detail">
                                 <span class="verify-detail-label">Fecha</span>
                                 <span class="verify-detail-value">${fecha || "—"}</span>
-                            </div>
-                            <div class="verify-detail">
-                                <span class="verify-detail-label">Tipo</span>
-                                <span class="verify-detail-value">${tipo || "—"}</span>
                             </div>
                             <div class="verify-detail">
                                 <span class="verify-detail-label">Orden</span>
